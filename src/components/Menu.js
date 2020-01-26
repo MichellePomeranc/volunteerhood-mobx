@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Button from '@material-ui/core/Button';
@@ -9,6 +9,8 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
+import { observer, inject } from "mobx-react"
+import { observe } from 'mobx';
 
 const useStyles = makeStyles({
   list: {
@@ -20,8 +22,9 @@ const useStyles = makeStyles({
   }
 });
 
-
-export default function Menu(props) {
+// @inject("User")
+// @observer
+const Menu = observer (({props}) => {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
@@ -49,7 +52,7 @@ export default function Menu(props) {
         <Divider />
         <ListItem><Link className={classes.list} to="/feed">Feed</Link></ListItem>
         <Divider />
-        <ListItem>{login === 'false' ? <Link className={classes.list} to="/login">Log In</Link> : <Link className={classes.list} to="/" onClick={logout}>Log out</Link>}</ListItem>
+        <ListItem>{login === 'f' ? <Link className={classes.list} to="/login">Log In</Link> : <Link className={classes.list} to="/" onClick={logout}>Log out</Link>}</ListItem>
         <Divider />
       </List>
     </div>
@@ -57,8 +60,8 @@ export default function Menu(props) {
 
   return (
     <div>
-      <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
-      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${props.user.login}`)}</Drawer>
+      <Button onClick={toggleDrawer('false', true)}><MenuIcon /></Button>
+      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${this.props.User.login}`)}</Drawer>
     </div>
   );
 }

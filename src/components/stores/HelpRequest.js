@@ -1,10 +1,14 @@
 import {observable} from 'mobx'
+import axios from 'axios';
 
-export class Request {
+export class HelpRequest {
+    @observable userReq
     @observable description
     @observable skill
     @observable status = 'opened'
-    constructor (helpDescription) {
-        this.description = helpDescription
-    }
+    @observable date
+
+    // constructor (helpDescription) {
+    //     this.description = helpDescription
+    // }
 }

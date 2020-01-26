@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import Feed from './Feed';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Profile from './Profile'
+// import Feed from './Feed';
+// import { BrowserRouter as Router, Route } from 'react-router-dom';
+// import Profile from './Profile'
+import { observer, inject } from 'mobx-react';
 
+@observer
+@inject("Request","Feed","User")
 class UserLog extends Component {
   constructor() {
     super()
@@ -43,7 +46,7 @@ class UserLog extends Component {
   }
 
   render() {
-    if (this.props.user.login) {
+    if (this.props.User.user.login) {
       return (
         <Redirect exact to="/feed" />
       )
