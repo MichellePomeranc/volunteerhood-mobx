@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextareaAutosize from 'react-autosize-textarea';
-import { observable } from "mobx"
+import { observer } from "mobx-react"
 
+@observer
 class NewRequest extends Component {
     constructor() {
         super();
@@ -13,16 +14,21 @@ class NewRequest extends Component {
             redirect: false
         }
     }
-    @observable updateState = (e) => {
-        const value = e.target.value
-        const name = e.target.name
-        console.log(name)
-        this.setState({
-            [name]: value
-        })
-        console.log(value)
 
+    inputHandler = (e) => {
+        this.props.Feed.handleInput(e.target.name, e.target.value)
     }
+
+    // updateState = (e) => {
+    //     const value = e.target.value
+    //     const name = e.target.name
+    //     console.log(name)
+    //     this.setState({
+    //         [name]: value
+    //     })
+    //     console.log(value)
+
+    // }
 
     addNewHelpReq = () => {
         let details = this.state
