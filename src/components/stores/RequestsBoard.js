@@ -1,10 +1,9 @@
 // import { observable, action, computed } from "mobx";
-import { observable} from "mobx";
+import { observable, action } from "mobx";
 import axios from 'axios';
 
 export class RequestsBoard {
     @observable feed = []
-    @observable user = {}
     @observable left= false
     
     async getFeed() {
@@ -13,21 +12,18 @@ export class RequestsBoard {
 		this.feed = response.data[0]
 	}
 
-    acceptReq = (reqId) => {
-		let helperId = this.user.id
-		// console.log(helperId)
+    acceptReq = (reqId, helperId) => {
+        console.log(reqId)
+		console.log(helperId)
 		axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
     }
     
-    addNewRequest = (obj) => {
-		console.log(obj)
-		let newRequest = {
-			userReq: this.user.id,
-			description: obj.text,
-			skill: obj.skill,
-			date: obj.date
-		}
-		const response = axios.post(`http://localhost:8080/feed`, newRequest)
-		// this.getFeed()
+    @action addNewRequest = (id, obj) => {
+        console.log(obj)
+        console.log(id)
+		let newRequest = new Request(
+            id, obj.text, obj.skill, obj.date
+        )
+		axios.post(`http://localhost:8080/feed`, newRequest)
 	}	
 }

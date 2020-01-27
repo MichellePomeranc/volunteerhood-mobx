@@ -7,22 +7,18 @@ import { observer, inject } from "mobx-react"
 @observer
 class Feed extends Component {
 
-  acceptReq = (id) => {
-    this.props.acceptReq(id);
-  }
-
   render(){
     // console.log(feed)
-    if(this.props.User.login){
-      let feed = this.props.feed
+    if(this.props.User.user.login){
+      let feed = this.props.Feed.feed
       return (
         <div>
         <div>
-          <h4>Hello {this.props.User.name}, who are you going to help today?</h4>
+          <h4>Hello {this.props.User.user.name}, who are you going to help today?</h4>
           <Link to="/newRequest"><button className="requestHelpBtn">Ask for Help</button></Link>
         </div>
         <table>
-          {this.props.Feed.feed.map(f => <Help key={f.id} f={f} acceptReq={this.acceptReq} />)}
+          {feed.map(f => <Help key={f.id} f={f} acceptReq={this.props.Feed.acceptReq} />)}
         </table>
         </div>
     )} else {

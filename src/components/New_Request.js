@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextareaAutosize from 'react-autosize-textarea';
-import { observer } from "mobx-react"
+import { observer, inject } from "mobx-react"
 
+@inject('User', 'Request', 'Feed')
 @observer
 class NewRequest extends Component {
     constructor() {
@@ -19,20 +20,20 @@ class NewRequest extends Component {
         this.props.Feed.handleInput(e.target.name, e.target.value)
     }
 
-    // updateState = (e) => {
-    //     const value = e.target.value
-    //     const name = e.target.name
-    //     console.log(name)
-    //     this.setState({
-    //         [name]: value
-    //     })
-    //     console.log(value)
-
-    // }
+    updateState = (e) => {
+        const value = e.target.value
+        const name = e.target.name
+        console.log(name)
+        this.setState({
+            [name]: value
+        })
+        console.log(value)
+    }
 
     addNewHelpReq = () => {
-        let details = this.state
-        this.props.addNewRequest(details)
+        let details = {...this.state}
+        console.log(details)
+        this.props.Feed.addNewRequest(this.props.User.user.id,details)
         this.setState({
             redirect: true
         })
