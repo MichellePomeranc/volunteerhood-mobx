@@ -9,7 +9,7 @@ export class HelpRequest {
     @observable date
 
     constructor(userReq, text, skill, date) {
-        // this.userReq = userReq
+        this.userReq = userReq
         this.text = text
         this.skill = skill
         this.date = date
