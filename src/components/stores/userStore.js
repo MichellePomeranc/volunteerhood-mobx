@@ -14,6 +14,14 @@ export class userStore {
         counter: Number
     }
 
+    @action getSkills = async()=>{
+        let userId = this.user.id
+        let skills = await axios.post(`http://localhost:8080/profile`,userId)
+        skills = skills.map(s=> s.skills)
+        console.log(skills)
+      
+      }
+
     @action addNewUser = async (obj) => {
         console.log(obj);
         let newUser = {
