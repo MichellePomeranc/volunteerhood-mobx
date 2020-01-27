@@ -6,13 +6,7 @@ import { inject } from 'mobx-react';
 class Profile extends Component {
   constructor() {
     super();
-    this.state = {
-      // name:"this.props",
-      // Email:"anything",
-      // Ranking:8,
-      // Skills:"everything",
-
-    };
+    this.state = {};
   }
   render() {
     if(this.props.User.login){

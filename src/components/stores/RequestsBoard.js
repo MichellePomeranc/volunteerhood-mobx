@@ -4,7 +4,7 @@ import {HelpRequest} from './HelpRequest'
 
 export class RequestsBoard {
     @observable feed = []
-    @observable left= false
+    @observable left = false
     
     @action async getFeed() {
 		let response = await axios.get('http://localhost:8080/feed');
@@ -15,12 +15,13 @@ export class RequestsBoard {
 		axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
     }
     
-    @action addNewRequest = (id, obj) => {
+    addNewRequest = async (id, obj) => {
         console.log(obj)
         // console.log(id)
 		let newRequest = new HelpRequest(
             id, obj.description, obj.skill, obj.date
         )
-		axios.post(`http://localhost:8080/feed`, newRequest)
+        await axios.post(`http://localhost:8080/feed`, newRequest)
+        this.getFeed()
 	}	
 }

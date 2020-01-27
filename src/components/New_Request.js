@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextareaAutosize from 'react-autosize-textarea';
 import { observer, inject } from "mobx-react"
+import { action } from 'mobx'
 
 @inject('User', 'Request', 'Feed')
 @observer
@@ -30,7 +31,7 @@ class NewRequest extends Component {
     }
 
     addNewHelpReq = () => {
-        let details = this.state
+        let details = {...this.state}
         console.log(details)
         this.props.Feed.addNewRequest(this.props.User.user.id, details)
         this.setState({
