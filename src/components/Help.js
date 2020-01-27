@@ -10,7 +10,6 @@ class Help extends Component {
     this.props.Feed.acceptReq(this.props.f.id, this.props.User.user.id)
   }
   render() {
-    // console.log(this.props.f)
     let f = this.props.f
     return (
       <tbody id='feed'>

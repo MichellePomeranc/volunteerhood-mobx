@@ -8,7 +8,6 @@ import { observer, inject } from "mobx-react"
 class Feed extends Component {
 
   render(){
-    // console.log(feed)
     if(this.props.User.user.login){
       let feed = this.props.Feed.feed
       return (
