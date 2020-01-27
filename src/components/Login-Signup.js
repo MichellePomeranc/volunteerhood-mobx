@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-// import Feed from './Feed';
-// import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import Profile from './Profile'
 import { observer, inject } from 'mobx-react';
 
-@observer
 @inject("Request","Feed","User")
+@observer
 class UserLog extends Component {
   constructor() {
     super()
@@ -27,22 +24,12 @@ class UserLog extends Component {
 
   postNewUser = () => {
     let newUser = { ...this.state }
-    this.props.addNewUser(newUser)
-    console.log(newUser);
-    
-    // return(
-    //  <Redirect exact to="/feed" />
-    // )
-    
-    
+    this.props.User.addNewUser(newUser)
   }
-  // logout=()=>{
-  //   this.props.login=false
-  // }
 
   login = () => {
     let newUser = { ...this.state }
-    this.props.login(newUser.email, newUser.password)
+    this.props.User.login(newUser.email, newUser.password)
   }
 
   render() {
