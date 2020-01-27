@@ -9,8 +9,8 @@ class NewRequest extends Component {
     constructor() {
         super();
         this.state = {
+            description: "",
             skill: "",
-            text: "",
             date: "",
             redirect: false
         }
@@ -23,7 +23,6 @@ class NewRequest extends Component {
     updateState = (e) => {
         const value = e.target.value
         const name = e.target.name
-        console.log(name)
         this.setState({
             [name]: value
         })
@@ -31,9 +30,9 @@ class NewRequest extends Component {
     }
 
     addNewHelpReq = () => {
-        let details = {...this.state}
+        let details = this.state
         console.log(details)
-        this.props.Feed.addNewRequest(this.props.User.user.id,details)
+        this.props.Feed.addNewRequest(this.props.User.user.id, details)
         this.setState({
             redirect: true
         })
@@ -53,7 +52,7 @@ class NewRequest extends Component {
             return (
                 <div className="requestForm">
                     <div className="descriptionForm">Descripition</div>
-                    <div><TextareaAutosize onResize={onResize} maxRows={5} className="description" type="text" name='text' onChange={this.updateState}></TextareaAutosize></div>
+                    <div><TextareaAutosize onResize={onResize} maxRows={5} className="description" type="text" name='description' onChange={this.updateState}></TextareaAutosize></div>
                     <div className="skillNeeded">Skill needed</div>
                     <div>
                         <select className="skillDropdown" name="skill" onChange={this.updateState}>
@@ -74,7 +73,7 @@ class NewRequest extends Component {
                         <input className="dateSelected" type="date" name='date' min={startDate} onChange={this.updateState}></input>
                     </div>
                     <div >
-                        <button className="addRequest" onClick={this.addNewHelpReq}>Create request</button>
+                        <button className="addRequest" onClick={this.addNewHelpReq}>Submit</button>
                     </div>
                 </div>
             )

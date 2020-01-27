@@ -30,7 +30,8 @@ router.post("/addSkill", function (req, res) {
 
 router.post("/feed", function (req, res) {
     let newHelp = req.body
-    let query = `INSERT INTO help_requests VALUES(null, '${newHelp.userReq}',null ,
+    console.log(newHelp)
+    let query = `INSERT INTO help_requests VALUES(null, '${newHelp.userReq}', null,
          'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}')`
     sequelize.query(query)
     res.send('the request inserted')
