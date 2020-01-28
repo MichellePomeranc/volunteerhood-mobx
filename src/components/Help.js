@@ -8,9 +8,9 @@ class Help extends Component {
   constructor() {
     super();
     this.state = {
-        style: this.useStyles()
+      style: this.useStyles()
     }
-}
+  }
 
   useStyles = () => makeStyles({})
 
@@ -30,9 +30,9 @@ class Help extends Component {
       width: '90vw',
       letterSpacing: 2,
       fontSize: 16
-  }
+    }
 
-  const style = this.state.style
+    const style = this.state.style
 
     let f = this.props.f
     return (

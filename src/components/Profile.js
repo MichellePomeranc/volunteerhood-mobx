@@ -5,58 +5,59 @@ import Axios from 'axios';
 
 @inject("User")
 class Profile extends Component {
-  constructor() {
-    super();
-    this.state = {
-      skills: []
-    };
-  }
-  
-componentWillMount(){
-	this.setState({
-		skills: this.chooseSkill()
-	})		
-}
+	constructor() {
+		super();
+		this.state = {
+			skills: []
+		};
+	}
 
-//  componentDidMount(){
-// 	this.preventDefault()
-//  }
+	componentWillMount() {
+		// this.state.skills = this.chooseSkill()
+		this.setState({
+			skills: this.chooseSkill()
+		})
+	}
 
-  chooseSkill = async()=>{
-        let skills = this.state.skills
+	//  componentDidMount(){
+	// 	this.preventDefault()
+	//  }
+
+	chooseSkill = async () => {
+		let skills = this.state.skills
 		let userId = this.props.User.user.id
-        let data ={
-          skills: skills,
-          userId: userId
-        }
+		let data = {
+			skills: skills,
+			userId: userId
+		}
 		await Axios.post(`http://localhost:8080/addSkill`, data)
 		skills = await this.props.User.getSkills()
-		skills = skills.data.map(s=>s.skill)
-			this.setState({
-				skills
-			})
+		skills = skills.data.map(s => s.skill)
+		this.setState({
+			skills
+		});
 		console.log(skills)
-			
 
-  	}
-	
+
+	}
+
 	//   login = () => {
 	// 	let newUser = { ...this.state }
 	// 	this.props.User.login(newUser.email, newUser.password)
 	//   }
 
-    	updateState = async (e) => {
-        const value = e.target.value;
-        let skills = this.state.skills;
-        if(skills.includes(value)){
-          return skills
-        }
-    		skills.push(value);
-    		// await this.setState({
-    		// 	skills
-    		// });
-	  };
-	  
+	updateState = async (e) => {
+		const value = e.target.value;
+		let skills = this.state.skills;
+		if (skills.includes(value)) {
+			return skills
+		}
+		skills.push(value);
+		// await this.setState({
+		// 	skills
+		// });
+	};
+
 	render() {
 		if (this.props.User.user.login) {
 			return (
@@ -68,32 +69,32 @@ componentWillMount(){
 						<div className="profileInfo">{this.props.User.user.email}</div>
 						<div className="profileRanking">Ranking</div>
 						<div className="profileInfo">{this.props.User.user.ranking}<span>★</span></div>
-						</div>
-						<div>
-							Skills: <br />
-							<div name="skills" onChange={this.updateState}>
-								<input type="checkbox" value="Carpentry" />Carpentry
+					</div>
+					<div>
+						Skills: <br />
+						<div name="skills" onChange={this.updateState}>
+							<input type="checkbox" value="Carpentry" />Carpentry
 								<br />
-								<input type="checkbox" checked={this.skills} value="Design" />Design
+							<input type="checkbox" checked={this.skills} value="Design" />Design
 								<br />
-								<input type="checkbox" value="Languages" />Languages
+							<input type="checkbox" value="Languages" />Languages
 								<br />
-								<input type="checkbox" value="Legal" />Legal
+							<input type="checkbox" value="Legal" />Legal
 								<br />
-								<input type="checkbox" defaultChecked={false} value="Electricity" />Electricity
+							<input type="checkbox" defaultChecked={false} value="Electricity" />Electricity
 								<br />
-								<input type="checkbox" value="Math" />Math
+							<input type="checkbox" value="Math" />Math
 								<br />
-								<input type="checkbox" value="Plumbing" />Plumbing
+							<input type="checkbox" value="Plumbing" />Plumbing
 								<br />
-								<input type="checkbox" value="Programming" />Programming
+							<input type="checkbox" value="Programming" />Programming
 								<br />
-								<input type="checkbox" value="Writing" />Writing
+							<input type="checkbox" value="Writing" />Writing
 								<br />
 								<input type="checkbox" value="Education" />Education<br />
-							</div>
 							<button onClick={this.chooseSkill}>Save</button>
 						</div>
+					</div>
 				</form>
 			);
 		} else {

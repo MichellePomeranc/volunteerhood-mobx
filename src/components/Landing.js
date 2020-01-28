@@ -7,8 +7,8 @@ export default class Landing extends Component {
 
     return (
       <div className="row">
-        <div >
-          <img className="logo" src={logo}  width="350" height="350"/>
+        <div className="logo">
+          <img className="logo" alt="Welcome" src={logo}  width="350" height="350"/>
         </div>
       </div>
     );

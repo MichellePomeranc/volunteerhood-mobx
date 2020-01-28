@@ -5,21 +5,20 @@ import { observer, inject } from "mobx-react"
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/core/styles'
 
-@inject ('Feed', 'User', 'Request')
+@inject('Feed', 'User', 'Request')
 @observer
 class Feed extends Component {
   constructor() {
     super();
     this.state = {
-        style: this.useStyles()
+      style: this.useStyles()
     }
-}
-
+  }
 
 useStyles = () => 
     makeStyles({})
 
-  render(){
+  render() {
     const list = {
       border: 0,
       borderRadius: 4,
@@ -31,11 +30,11 @@ useStyles = () =>
       marginBottom: 20,
       letterSpacing: 2,
       fontSize: 16
-  }
+    }
 
-  const style = this.state.style
+    const style = this.state.style
 
-    if(this.props.User.user.login){
+    if (this.props.User.user.login) {
       let feed = this.props.Feed.feed
       return (
         <div>
@@ -47,7 +46,8 @@ useStyles = () =>
           {feed.map(f => <Help key={f.id} f={f} acceptReq={this.props.Feed.acceptReq} />)}
         </table>
         </div>
-    )} else {
+      )
+    } else {
       return <Redirect to='/login'></Redirect>
     }
   }

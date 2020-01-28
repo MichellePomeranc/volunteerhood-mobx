@@ -24,7 +24,7 @@ class App extends Component {
 		return (
 			<div>
 				<Router>
-					<Menu user={this.props.Feed.user} logout={this.props.User.logout}/>
+					<Menu user={this.props.Feed.user} logout={this.props.User.logout} />
 					<Route path="/" exact render={() => <Landing />} />
 					<Route path="/feed" exact render={() => <Feed acceptReq={this.props.Feed.acceptReq} />} />
 					<Route path="/profile" exact render={() => <Profile />} />
