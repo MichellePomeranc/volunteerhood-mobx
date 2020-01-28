@@ -11,7 +11,7 @@ router.get("/feed", async function (req, res) {
 })
 
 router.post("/profile", async function (req, res) {
-    let userId  = req.body
+    let userId = req.body
     userId = Object.keys(userId)
     // console.log(req.body[0])
     console.log(userId)
@@ -34,7 +34,7 @@ router.post("/signup", async function (req, res) {
 router.post("/addSkill", function (req, res) {
     let skills = req.body.skills
     let userId = req.body.userId
-    skills.forEach(s=>{
+    skills.forEach(s => {
         let query = `INSERT INTO user_skills VALUES( '${userId}', '${s}' )`
         sequelize.query(query)
     })
@@ -79,7 +79,7 @@ router.post('/notications', async function (req, res) {
 
     let query = `SELECT help_request_id, helper_id
     FROM help_requests, help_requests_helpers
-    WHERE help_requests.userReq = 2
+    WHERE help_requests.userReq = '${userId}'
     AND help_requests.id = help_requests_helpers.help_request_id`
     let helpRequestId = await sequelize.query(query);
     console.log(helpRequestId[0]);
