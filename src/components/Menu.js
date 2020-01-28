@@ -9,7 +9,10 @@ import ListItem from '@material-ui/core/ListItem';
 import MenuIcon from '@material-ui/icons/Menu';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
-import { observer, inject } from "mobx-react";
+import { observer, inject } from "mobx-react"
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+const logoBar = require('../../src/Files/volunteerhood-bar.png')
 
 
 @inject("User")
@@ -27,7 +30,6 @@ class Menu extends Component {
   useStyles = () =>
     makeStyles({
       list: {
-        textDecorationLine: 'none',
         color: 'black',
         width: '70vw',
         fontFamily: 'sans-serif',
@@ -49,12 +51,10 @@ class Menu extends Component {
       this.props.logout()
     }
     const list = {
-      textDecorationLine: 'none',
       color: 'black',
       width: '70vw',
       fontFamily: 'sans-serif',
-      fontSize: '25px'
-
+      fontSize: '25px',
     }
 
     const classes = this.state.classes
@@ -62,16 +62,16 @@ class Menu extends Component {
       <div style={list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)}>
         <List>
           <ListItem alignItems="flex-start">
-            <ListItemAvatar><Avatar alt="Remy Sharp" src="../public/logo512.png" /></ListItemAvatar>
+            <ListItemAvatar><Avatar alt={this.props.User.user.name} src="../public/logo512.png" /></ListItemAvatar>
           </ListItem>
           <Divider />
-          <ListItem><Link to="/profile" className={classes.list}>Profile</Link></ListItem>
+          <ListItem><Link style={{ textDecoration: 'none' }} to="/profile" className={classes.list}>PROFILE</Link></ListItem>
           <Divider />
-          <ListItem><Link to="/feed" className={classes.list}>Feed</Link></ListItem>
+          <ListItem><Link style={{ textDecoration: 'none' }} to="/feed" className={classes.list}>FEED</Link></ListItem>
           <Divider />
           <ListItem><Link to="/notifications" className={classes.list}>Notifications</Link></ListItem>
           <Divider />
-          <ListItem>{login === 'false' ? <Link className={classes.list} to="/login">Log In</Link> : <Link className={classes.list} to="/" onClick={logout}>Log out</Link>}</ListItem>
+          <ListItem>{login === 'false' ? <Link style={{ textDecoration: 'none' }} className={classes.list} to="/login">LOG IN</Link> : <Link style={{ textDecoration: 'none' }} className={classes.list} to="/" onClick={logout}>LOG OUT</Link>}</ListItem>
           <Divider />
         </List>
       </div>
@@ -80,7 +80,12 @@ class Menu extends Component {
 
     return (
       <div>
-        <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
+        <AppBar position="static">
+          <Toolbar>
+            <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
+            <img src={logoBar} width="300" height="50" />
+          </Toolbar>
+        </AppBar>
         <Drawer style={list} open={this.state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${this.props.User.user.login}`)}</Drawer>
       </div>
     );
