@@ -86,4 +86,14 @@ router.post('/notications', async function (req, res) {
     res.send(helpRequestId);
 })
 
+router.post('/getUserDetails', async function (req, res) {
+    let userId = Object.keys(req.body)[0];
+    console.log(userId);
+
+    let query = `SELECT * FROM user WHERE id = '${userId}'`
+    let helperDetails = await sequelize.query(query);
+    console.log(helperDetails[0]);
+    res.send(helperDetails[0]);
+})
+
 module.exports = router
