@@ -15,6 +15,7 @@ class Profile extends Component {
 componentWillMount(){
 	this.state.skills = this.chooseSkill()
 }
+
 //  componentDidMount(){
 // 	this.preventDefault()
 //  }

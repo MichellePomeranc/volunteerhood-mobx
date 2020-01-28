@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import Divider from '@material-ui/core/Divider';
 
-@inject("Request","Feed","User")
+@inject("Request", "Feed", "User")
 @observer
 class UserLog extends Component {
   constructor() {
@@ -11,9 +14,26 @@ class UserLog extends Component {
       name: "",
       email: "",
       password: "",
-      phone: ""
+      phone: "",
+      style: this.useStyles()
     }
   }
+
+  useStyles = () => 
+    makeStyles({
+      list: {
+        border: 0,
+        borderRadius: 4,
+        backgroundColor: '#5B2333',
+        boxShadow: '#564D4A',
+        color: 'white',
+        height: 40,
+        width: 120,
+        margin: 20,
+        letterSpacing: 2,
+        fontSize: 16
+        }
+    })
 
   update = (e) => {
     const name = e.target.name;
@@ -33,6 +53,21 @@ class UserLog extends Component {
   }
 
   render() {
+     const list = {
+            border: 0,
+            borderRadius: 4,
+            backgroundColor: '#5B2333',
+            boxShadow: '#564D4A',
+            color: 'white',
+            height: 40,
+            width: 120,
+            margin: 20,
+            letterSpacing: 2,
+            fontSize: 16
+        }
+      
+        const style = this.state.style
+
     if (this.props.User.user.login) {
       return (
         <Redirect exact to="/feed" />
@@ -44,9 +79,7 @@ class UserLog extends Component {
             <h3>LOG IN</h3>
             <div><input id="emailInput" name='email' type="email" placeholder="Email" onChange={this.update}></input></div>
             <div><input id="passwordInputSignIn" name='password' type="password" placeholder="Password" onChange={this.update}></input></div>
-            <button className="loginbtn" onClick={this.login}>Log In</button>
-            
-
+            <Button style={list} className={style.list} onClick={this.login}>LOG IN</Button>
           </div>
           <div className="signupForm">
             <h3>SIGN UP</h3>
@@ -54,7 +87,7 @@ class UserLog extends Component {
             <div><input id="emailInput" name='email' type="email" placeholder="Email" onChange={this.update}></input></div>
             <div><input id="passwordInputSignUp" name='password' type="password" placeholder="Password" onChange={this.update}></input></div>
             <div><input id="phoneInput" name='phone' type="text" placeholder="Phone number" onChange={this.update}></input></div>
-            <button className="signupbtn" onClick={this.postNewUser}>Sign Up</button>
+            <Button style={list} className={style.list} onClick={this.postNewUser}>SIGN UP</Button>
           </div>
         </div>
       )

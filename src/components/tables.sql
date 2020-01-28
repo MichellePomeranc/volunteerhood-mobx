@@ -50,3 +50,10 @@ USE volunteerhood;
 -- DROP TABLE skills;
 -- DROP TABLE help_requests;
 -- DROP TABLE user_skills;
+
+-- CREATE TABLE help_requests_helpers(
+--     help_request_id INT NOT NULL,
+--     helper_id INT NOT NULL,
+--     FOREIGN KEY (help_request_id) REFERENCES help_requests(id),
+--     FOREIGN KEY (helper_id) REFERENCES user(id)
+-- )

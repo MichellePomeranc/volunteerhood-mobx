@@ -1,16 +1,15 @@
 import { observable } from 'mobx'
-import axios from 'axios';
 
 export class HelpRequest {
     @observable userReq
-    @observable text
+    @observable description
     @observable skill
-    @observable status = 'opened'
+    @observable status = 'open'
     @observable date
 
-    constructor(userReq, text, skill, date) {
+    constructor(userReq, description, skill, date) {
         this.userReq = userReq
-        this.text = text
+        this.description = description
         this.skill = skill
         this.date = date
     }
