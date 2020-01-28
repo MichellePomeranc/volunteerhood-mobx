@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import { observer, inject } from 'mobx-react';
 
-@inject("Request","Feed","User")
+@inject("Request", "Feed", "User")
 @observer
 class UserLog extends Component {
   constructor() {
@@ -45,7 +45,7 @@ class UserLog extends Component {
             <div><input id="emailInput" name='email' type="email" placeholder="Email" onChange={this.update}></input></div>
             <div><input id="passwordInputSignIn" name='password' type="password" placeholder="Password" onChange={this.update}></input></div>
             <button className="loginbtn" onClick={this.login}>Log In</button>
-            
+
 
           </div>
           <div className="signupForm">
