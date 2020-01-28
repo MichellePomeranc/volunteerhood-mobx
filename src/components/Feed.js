@@ -17,20 +17,7 @@ class Feed extends Component {
 
 
 useStyles = () => 
-    makeStyles({
-      list: {
-        border: 0,
-        borderRadius: 4,
-        backgroundColor: '#5B2333',
-        boxShadow: '#564D4A',
-        color: 'white',
-        height: 40,
-        width: '70vw',
-        marginBottom: 20,
-        letterSpacing: 2,
-        fontSize: 16
-        }
-    })
+    makeStyles({})
 
   render(){
     const list = {
@@ -52,7 +39,7 @@ useStyles = () =>
       let feed = this.props.Feed.feed
       return (
         <div>
-        <div>
+        <div className="welcomeMessage">
           <h4>Hello {this.props.User.user.name}, who are you going to help today?</h4>
           <Link style={{ textDecoration: 'none' }} to="/newRequest"><Button style={list} className={style.list}>Ask for Help</Button></Link>
         </div>

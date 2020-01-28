@@ -16,10 +16,11 @@ acceptReq = (reqId, helperId) => {
 		axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
   }
     
-addNewRequest = async (id, obj) => {
+@action addNewRequest = async (id, obj, name) => {
 		let newRequest = new HelpRequest(
-            id, obj.description, obj.skill, obj.date
+            id, obj.description, obj.skill, obj.date, name
         )
+        console.log(newRequest)
     await axios.post(`http://localhost:8080/feed`, newRequest)
     this.getFeed()
   }	  

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { observable } from 'mobx';
+import { Redirect } from 'react-router-dom';
 
 @inject('Feed', 'User')
 @observer
@@ -55,11 +55,7 @@ class Notifications extends Component {
                 </div>
             )
         } else {
-            return (
-                < div >
-                    <h3>please log in</h3>
-                </div >
-            )
+            return <Redirect to="/login" />
         }
     }
 }

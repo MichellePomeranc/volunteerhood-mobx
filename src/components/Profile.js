@@ -13,7 +13,9 @@ class Profile extends Component {
   }
   
 componentWillMount(){
-	this.state.skills = this.chooseSkill()
+	this.setState({
+		skills: this.chooseSkill()
+	})		
 }
 
 //  componentDidMount(){
@@ -32,7 +34,7 @@ componentWillMount(){
 		skills = skills.data.map(s=>s.skill)
 			this.setState({
 				skills
-			});
+			})
 		console.log(skills)
 			
 
@@ -90,7 +92,7 @@ componentWillMount(){
 								<br />
 								<input type="checkbox" value="Education" />Education<br />
 							</div>
-							<button onClick={this.chooseSkill}>sumbit</button>
+							<button onClick={this.chooseSkill}>Save</button>
 						</div>
 				</form>
 			);
