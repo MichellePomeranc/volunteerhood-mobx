@@ -69,7 +69,7 @@ class Menu extends Component {
           <Divider />
           <ListItem><Link style={{ textDecoration: 'none' }} to="/feed" className={classes.list}>FEED</Link></ListItem>
           <Divider />
-          <ListItem><Link to="/notifications" className={classes.list}>Notifications</Link></ListItem>
+          <ListItem><Link style={{ textDecoration: 'none' }} to="/notifications" className={classes.list}>NOTIFICATIONS</Link></ListItem>
           <Divider />
           <ListItem>{login === 'false' ? <Link style={{ textDecoration: 'none' }} className={classes.list} to="/login">LOG IN</Link> : <Link style={{ textDecoration: 'none' }} className={classes.list} to="/" onClick={logout}>LOG OUT</Link>}</ListItem>
           <Divider />

@@ -8,24 +8,24 @@ class Help extends Component {
   constructor() {
     super();
     this.state = {
-        style: this.useStyles()
+      style: this.useStyles()
     }
-}
+  }
 
-  useStyles = () => 
-  makeStyles({
-    list: {
-      border: 0,
-      borderRadius: 4,
-      backgroundColor: '#5B2333',
-      boxShadow: '#564D4A',
-      color: 'white',
-      height: 40,
-      width: '90vw',
-      letterSpacing: 2,
-      fontSize: 16
+  useStyles = () =>
+    makeStyles({
+      list: {
+        border: 0,
+        borderRadius: 4,
+        backgroundColor: '#5B2333',
+        boxShadow: '#564D4A',
+        color: 'white',
+        height: 40,
+        width: '90vw',
+        letterSpacing: 2,
+        fontSize: 16
       }
-  })
+    })
 
   acceptReq = () => {
     console.log(this.props.f.id);
@@ -42,9 +42,9 @@ class Help extends Component {
       width: '90vw',
       letterSpacing: 2,
       fontSize: 16
-  }
+    }
 
-  const style = this.state.style
+    const style = this.state.style
 
     let f = this.props.f
     return (
