@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import TextareaAutosize from 'react-autosize-textarea';
 import { observer, inject } from "mobx-react"
-import { action } from 'mobx'
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
 @inject('User', 'Request', 'Feed')
 @observer
@@ -13,9 +14,26 @@ class NewRequest extends Component {
             description: "",
             skill: "",
             date: "",
-            redirect: false
+            redirect: false,
+            style: this.useStyles()
         }
     }
+
+    useStyles = () => 
+    makeStyles({
+      list: {
+        border: 0,
+        borderRadius: 4,
+        backgroundColor: '#5B2333',
+        boxShadow: '#564D4A',
+        color: 'white',
+        height: 40,
+        width: 120,
+        margin: 20,
+        letterSpacing: 2,
+        fontSize: 16
+        }
+    })
 
     inputHandler = (e) => {
         this.props.Feed.handleInput(e.target.name, e.target.value)
@@ -40,6 +58,22 @@ class NewRequest extends Component {
     }
 
     render() {
+
+        const list = {
+            border: 0,
+            borderRadius: 4,
+            backgroundColor: '#5B2333',
+            boxShadow: '#564D4A',
+            color: 'white',
+            height: 40,
+            width: 120,
+            margin: 20,
+            letterSpacing: 2,
+            fontSize: 16
+        }
+      
+        const style = this.state.style
+
         const startDate = new Date();
         function onResize(event) {
             console.log(event.type);
@@ -74,7 +108,7 @@ class NewRequest extends Component {
                         <input className="dateSelected" type="date" name='date' min={startDate} onChange={this.updateState}></input>
                     </div>
                     <div >
-                        <button className="addRequest" onClick={this.addNewHelpReq}>Submit</button>
+                        <Button style={list} className={style.list} onClick={this.addNewHelpReq}>Submit</Button>
                     </div>
                 </div>
             )
