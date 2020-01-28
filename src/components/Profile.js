@@ -11,36 +11,51 @@ class Profile extends Component {
       skills: []
     };
   }
+  
+componentWillMount(){
+	this.state.skills = this.chooseSkill()
+}
+//  componentDidMount(){
+// 	this.preventDefault()
+//  }
 
-  chooseSkill = async (e)=>{
-    e.preventDefault()
+  chooseSkill = async()=>{
         let skills = this.state.skills
-        let userId = this.props.User.user.id
+		let userId = this.props.User.user.id
         let data ={
           skills: skills,
           userId: userId
         }
-        console.log(data)
-        let response = await Axios.post(`http://localhost:8080/addSkill`, data)
-          console.log(response)
-      }
-    
+		await Axios.post(`http://localhost:8080/addSkill`, data)
+		skills = await this.props.User.getSkills()
+		skills = skills.data.map(s=>s.skill)
+			this.setState({
+				skills
+			});
+		console.log(skills)
+			
+
+  	}
+	
+	//   login = () => {
+	// 	let newUser = { ...this.state }
+	// 	this.props.User.login(newUser.email, newUser.password)
+	//   }
+
     	updateState = async (e) => {
         const value = e.target.value;
-        let skills = [ ...this.state.skills ];
+        let skills = this.state.skills;
         if(skills.includes(value)){
           return skills
         }
     		skills.push(value);
-    		await this.setState({
-    			skills
-    		});
-    		console.log(value);
-    		console.log(this.state);
-      };
+    		// await this.setState({
+    		// 	skills
+    		// });
+	  };
+	  
 	render() {
-		if (this.props.User.login) {
-			this.props.User.getSkills()
+		if (this.props.User.user.login) {
 			return (
 				<form>
 					<div className="userProfile">

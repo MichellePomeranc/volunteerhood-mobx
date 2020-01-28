@@ -5,20 +5,19 @@ export class userStore {
     @observable user = {
         id: Number,
         login: false,
-        name: 'guest',
+        name: '',
         email: '',
         password: '',
         phone: '',
         radius: Number,
         ranking: Number,
-        counter: Number
+        counter: Number,
     }
 
     @action getSkills = async()=>{
         let userId = this.user.id
         let skills = await axios.post(`http://localhost:8080/profile`,userId)
-        skills = skills.map(s=> s.skills)
-        console.log(skills)
+        return skills
       
       }
 
@@ -31,7 +30,7 @@ export class userStore {
             phone: obj.phone,
             radius: 0,
             ranking: 0,
-            counter: 0
+            counter: 0,
         }
         let id = await axios.post('http://localhost:8080/signup', newUser)
         console.log(id.data[0])
@@ -45,7 +44,7 @@ export class userStore {
             phone: newUser.phone,
             radius: newUser.radius,
             ranking: newUser.ranking,
-            counter: newUser.counter
+            counter: newUser.counter,
         }
     }
 
@@ -54,7 +53,7 @@ export class userStore {
             auth: {
                 email: email,
                 password: password
-            }
+            } 
         })
         console.log(user.data[0])
         user = user.data[0]
@@ -67,7 +66,7 @@ export class userStore {
             phone: user.phone,
             radius: user.radius,
             ranking: user.ranking,
-            counter: user.counter
+            counter: user.counter,
         }
     }
 
@@ -81,7 +80,7 @@ export class userStore {
             phone: '',
             radius: Number,
             ranking: Number,
-            counter: Number
+            counter: Number,
         }
     }
 }

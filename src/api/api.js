@@ -11,13 +11,17 @@ router.get("/feed", async function (req, res) {
 })
 
 router.post("/profile", async function (req, res) {
-    let userId  = req.body.userId
+    let userId  = req.body
+    userId = Object.keys(userId)
+    // console.log(req.body[0])
     console.log(userId)
     let query = `SELECT * FROM user_skills WHERE user = ${userId}`
     let result = await sequelize.query(query)
-    res.send(result[0])
+    // result = new Set(result)
+    console.log(result)
+    console.log(result[1])
+    res.send(result[1])
 })
-
 
 router.post("/signup", async function (req, res) {
     let newUser = req.body
@@ -27,16 +31,14 @@ router.post("/signup", async function (req, res) {
     res.send(x)
 })
 
-
 router.post("/addSkill", function (req, res) {
     let skills = req.body.skills
     let userId = req.body.userId
-    console.log(skills,userId)
-    skills.forEach(s => {
+    skills.forEach(s=>{
         let query = `INSERT INTO user_skills VALUES( '${userId}', '${s}' )`
         sequelize.query(query)
     })
-    res.end()
+    res.send()
 })
 
 router.post("/feed", function (req, res) {
