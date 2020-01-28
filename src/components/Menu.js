@@ -14,6 +14,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 const logoBar = require('../../src/Files/volunteerhood-bar.png')
 
+
 @inject("User")
 @observer
 class Menu extends Component {
@@ -67,6 +68,8 @@ class Menu extends Component {
           <ListItem><Link style={{ textDecoration: 'none' }} to="/profile" className={classes.list}>PROFILE</Link></ListItem>
           <Divider />
           <ListItem><Link style={{ textDecoration: 'none' }} to="/feed" className={classes.list}>FEED</Link></ListItem>
+          <Divider />
+          <ListItem><Link to="/notifications" className={classes.list}>Notifications</Link></ListItem>
           <Divider />
           <ListItem>{login === 'false' ? <Link style={{ textDecoration: 'none' }} className={classes.list} to="/login">LOG IN</Link> : <Link style={{ textDecoration: 'none' }} className={classes.list} to="/" onClick={logout}>LOG OUT</Link>}</ListItem>
           <Divider />
