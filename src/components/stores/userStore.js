@@ -5,7 +5,7 @@ export class userStore {
     @observable user = {
         id: Number,
         login: false,
-        name: 'guest',
+        name: String,
         email: '',
         password: '',
         phone: '',
