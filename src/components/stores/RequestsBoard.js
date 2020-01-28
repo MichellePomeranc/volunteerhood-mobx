@@ -2,7 +2,7 @@ import { observable, action } from "mobx";
 import axios from 'axios';
 import {HelpRequest} from './HelpRequest'
 
-export class RequestsBoard {
+export class RequestsBoard{
     @observable feed = []
     @observable left = false
     @observable notifications = []
@@ -36,5 +36,4 @@ addNewRequest = async (id, obj) => {
         // }
         return x
     }
-	
 }
