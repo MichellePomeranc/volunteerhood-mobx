@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
-// const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
+// const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
+const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
 
 router.get("/feed", async function (req, res) {
     let query = `SELECT * FROM help_requests`
@@ -43,8 +43,9 @@ router.post("/addSkill", function (req, res) {
 
 router.post("/feed", function (req, res) {
     let newHelp = req.body
+    console.log(newHelp)
     let query = `INSERT INTO help_requests VALUES(null, '${newHelp.userReq}', null,
-         'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}')`
+         'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}', '${newHelp.name}')`
     sequelize.query(query)
     res.send('the request inserted')
 })

@@ -91,9 +91,9 @@ class Profile extends Component {
 								<br />
 							<input type="checkbox" value="Writing" />Writing
 								<br />
-							<input type="checkbox" value="Education" />Education<br />
+								<input type="checkbox" value="Education" />Education<br />
+							<button onClick={this.chooseSkill}>Save</button>
 						</div>
-						<button onClick={this.chooseSkill}>sumbit</button>
 					</div>
 				</form>
 			);

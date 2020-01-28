@@ -27,15 +27,7 @@ class Menu extends Component {
     }
   }
 
-  useStyles = () =>
-    makeStyles({
-      list: {
-        color: 'black',
-        width: '70vw',
-        fontFamily: 'sans-serif',
-        fontSize: '25px'
-      }
-    })
+  useStyles = () => makeStyles({})
 
   render() {
 
@@ -61,7 +53,7 @@ class Menu extends Component {
     const sideList = (side, login) => (
       <div style={list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)}>
         <List>
-          <ListItem alignItems="flex-start">
+          <ListItem >
             <ListItemAvatar><Avatar alt={this.props.User.user.name} src="../public/logo512.png" /></ListItemAvatar>
           </ListItem>
           <Divider />
@@ -80,10 +72,10 @@ class Menu extends Component {
 
     return (
       <div>
-        <AppBar position="static">
-          <Toolbar>
-            <Button onClick={toggleDrawer('left', true)}><MenuIcon /></Button>
-            <img src={logoBar} width="300" height="50" />
+        <AppBar position="static" style={{backgroundColor: '#F24333'}}>
+          <Toolbar >
+            <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{color: '#FFFFFF'}}/></Button>
+            <Link to="/"><img src={logoBar} width="250" height="50" /></Link>
           </Toolbar>
         </AppBar>
         <Drawer style={list} open={this.state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${this.props.User.user.login}`)}</Drawer>

@@ -20,20 +20,7 @@ class NewRequest extends Component {
     }
 
     useStyles = () => 
-    makeStyles({
-      list: {
-        border: 0,
-        borderRadius: 4,
-        backgroundColor: '#5B2333',
-        boxShadow: '#564D4A',
-        color: 'white',
-        height: 40,
-        width: 120,
-        margin: 20,
-        letterSpacing: 2,
-        fontSize: 16
-        }
-    })
+    makeStyles({})
 
     inputHandler = (e) => {
         this.props.Feed.handleInput(e.target.name, e.target.value)
@@ -51,7 +38,7 @@ class NewRequest extends Component {
     addNewHelpReq = () => {
         let details = {...this.state}
         console.log(details)
-        this.props.Feed.addNewRequest(this.props.User.user.id, details)
+        this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name)
         this.setState({
             redirect: true
         })

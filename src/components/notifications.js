@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { inject, observer } from "mobx-react";
-import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom';
 
 
 @inject('Feed', 'User')

@@ -18,21 +18,7 @@ class UserLog extends Component {
     }
   }
 
-  useStyles = () =>
-    makeStyles({
-      list: {
-        border: 0,
-        borderRadius: 4,
-        backgroundColor: '#5B2333',
-        boxShadow: '#564D4A',
-        color: 'white',
-        height: 40,
-        width: 120,
-        margin: 20,
-        letterSpacing: 2,
-        fontSize: 16
-      }
-    })
+  useStyles = () => makeStyles({})
 
   update = (e) => {
     const name = e.target.name;

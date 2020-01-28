@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Feed from './components/Feed';
-// import UserLog from './components/Login-Signup'
 import Landing from './components/Landing';
 import UserLog from './components/Login-Signup'
 import Menu from './components/Menu';
@@ -10,7 +9,7 @@ import Profile from './components/Profile';
 import 'font-awesome/css/font-awesome.min.css';
 import NewRequest from './components/New_Request';
 import { observer, inject } from 'mobx-react';
-import Notifications from './components/notifications';
+import Notifications from './components/Notifications';
 
 
 @inject("Request", "Feed", "User")
