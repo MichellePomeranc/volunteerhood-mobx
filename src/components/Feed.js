@@ -42,9 +42,7 @@ useStyles = () =>
           <h4>Hello {this.props.User.user.name}, who are you going to help today?</h4>
           <Link style={{ textDecoration: 'none' }} to="/newRequest"><Button style={list} className={style.list}>Ask for Help</Button></Link>
         </div>
-        {/* <table> */}
           {feed.map(f => <Help key={f.id} f={f} acceptReq={this.props.Feed.acceptReq} />)}
-        {/* </table> */}
         </div>
       )
     } else {

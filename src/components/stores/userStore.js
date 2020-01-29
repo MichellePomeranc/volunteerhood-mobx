@@ -57,17 +57,20 @@ export class userStore {
         })
         console.log(user.data[0])
         user = user.data[0]
-        if (user){
-        this.user = {
-            id: user.id,
-            login: true,
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            phone: user.phone,
-            radius: user.radius,
-            ranking: user.ranking,
-            counter: user.counter,
+        if (user) {
+            this.user = {
+                id: user.id,
+                login: true,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+                phone: user.phone,
+                radius: user.radius,
+                ranking: user.ranking,
+                counter: user.counter,
+            }
+        } else {
+            alert('Please enter a valid email and password')
         }
     } 
     this.getSkills()

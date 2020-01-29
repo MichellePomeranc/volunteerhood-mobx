@@ -18,7 +18,7 @@ class Notifications extends Component {
                 <div>
                     <div>
                         {notifications.map(n => <div key={n.helper_id + n.help_request_id}>
-                            {n.helper_id} wants to help with {n.help_request_id}
+                            {n.name} wants to help with {n.description}
                             <span onClick={() => this.props.Feed.userAcceptsHelp(n.helper_id)}> Accept</span>
                         </div>)}
                         <div>{helperDetails.name}</div>
