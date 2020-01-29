@@ -60,14 +60,12 @@ class Menu extends Component {
       <div style={list} role="presentation" onClick={toggleDrawer(side, false)} onKeyDown={toggleDrawer(side, false)}>
         <List>
           <ListItem >
-            <ListItemAvatar><Avatar alt={this.props.User.user.name} src="../public/logo512.png" /></ListItemAvatar>
+            <ListItemAvatar><Avatar alt={this.props.User.user.name} src={this.props.User.user.image} /></ListItemAvatar>
           </ListItem>
           <Divider />
           <ListItem><Link style={{ textDecoration: 'none' }} to="/profile" className={classes.list}>PROFILE</Link></ListItem>
           <Divider />
           <ListItem><Link style={{ textDecoration: 'none' }} to="/feed" className={classes.list}>FEED</Link></ListItem>
-          <Divider />
-          <ListItem><Link style={{ textDecoration: 'none' }} to="/notifications" className={classes.list}>NOTIFICATIONS</Link></ListItem>
           <Divider />
           <ListItem>{login === 'false' ? <Link style={{ textDecoration: 'none' }} className={classes.list} to="/login">LOG IN</Link> : <Link style={{ textDecoration: 'none' }} className={classes.list} to="/" onClick={logout}>LOG OUT</Link>}</ListItem>
           <Divider />
@@ -75,33 +73,12 @@ class Menu extends Component {
       </div>
     );
 
-    // const showIcons = () => {
-    //   return (
-    //     <div className='navButtons'>
-    //       <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="inherit">
-    //         <Badge badgeContent={0} color="secondary">
-    //           <MailIcon />
-    //         </Badge>
-    //       </IconButton>
-    //       </Link>
-    //       <Link to='/notifications'><IconButton aria-label="show 17 new notifications" color="inherit">
-    //         <Badge badgeContent={0} color="secondary">
-    //           <NotificationsIcon />
-    //         </Badge>
-    //       </IconButton>
-    //       </Link>
-    //     </div>
-    //   )
-    // }
-
-
     return (
       <div>
         <AppBar position="static" style={{ backgroundColor: '#F24333' }}>
           <Toolbar >
             <Button edge="start" onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: '#FFFFFF' }} /></Button>
             <Link to="/"><img src={logoBar} alt="Volunteerhood" width='175vw' height="40px" /></Link>
-            {/* {this.props.User.user.login ? showIcons() : null} */}
             {this.props.User.user.login ? 
             <div className='navButtons'>
           <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="#F7F4F3">

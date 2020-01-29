@@ -13,6 +13,7 @@ export class userStore {
         ranking: Number,
         counter: Number,
         skills: [],
+        image: String
     }
 
     @action getSkills = async () => {
@@ -68,6 +69,7 @@ export class userStore {
                 radius: user.radius,
                 ranking: user.ranking,
                 counter: user.counter,
+                image: user.image
             }
         } else {
             alert('Please enter a valid email and password')
@@ -86,6 +88,7 @@ export class userStore {
             radius: Number,
             ranking: Number,
             counter: Number,
+            image: String
         }
     }
 }
