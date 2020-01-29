@@ -58,5 +58,5 @@ USE volunteerhood;
 --     FOREIGN KEY (helper_id) REFERENCES user(id)
 -- )
 
-ALTER TABLE help_requests
+ALTER TABLE help_requests_helpers
 ADD name VARCHAR(50)
