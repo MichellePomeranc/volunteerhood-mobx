@@ -113,13 +113,13 @@ body {
   justify-content: center;
 }
 
-.profileName, .profileEmail, .profileRanking {
+.profileName, .profileEmail, .profileRanking, .skills {
   margin-left: 15px;
   margin-top: 15px;
   font-size: 15px;
 }
 
-.profileInfo {
+.profileInfo, .skillContainer {
   margin-left: 15px;
   font-size: 23px;
 }
@@ -146,11 +146,33 @@ body {
   align-items: center;
   justify-content: center;
 }
+
+.counter{
+  border: 1px solid #564D4A;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+  background-color: rgba(255,255,255,0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 600;
+  color: #F24333
+}
+
 .navButtons{
   display: inherit;
 }
 
 .MuiSvgIcon-root {
   color: white
+}
+
+.profileImage{
+  border-radius: 50%;
+  margin: 10px;
+  margin-left: 10px;
 }
 }

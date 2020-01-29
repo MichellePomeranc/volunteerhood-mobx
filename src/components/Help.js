@@ -51,7 +51,7 @@ class Help extends Component {
         />
             <div>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h6" fontWeight='bold'>
+              <Typography gutterBottom variant="h5" component="h5">
                 {f.skill}
               </Typography>
               <Typography fontSize='15px'>
@@ -62,6 +62,9 @@ class Help extends Component {
               </Typography>
               <Typography variant="body2" color="textSecondary" fontSize='12px'>
                 {f.description}
+              </Typography>
+              <Typography variant="h6" component="h6">
+                {f.status}
               </Typography>
             </CardContent>
             </div>
