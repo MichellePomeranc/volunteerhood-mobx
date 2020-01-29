@@ -99,7 +99,6 @@ class Menu extends Component {
       <div>
         <AppBar position="static" style={{ backgroundColor: '#F24333' }}>
           <Toolbar >
-<<<<<<< HEAD
             <Button edge="start" onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: '#FFFFFF' }} /></Button>
             <Link to="/"><img src={logoBar} alt="Volunteerhood" width='175vw' height="40px" /></Link>
             {/* {this.props.User.user.login ? showIcons() : null} */}
@@ -118,10 +117,6 @@ class Menu extends Component {
           </IconButton>
           </Link> 
         </div> : null }
-=======
-            <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: '#FFFFFF' }} /></Button>
-            <Link to="/"><img src={logoBar} width="250" height="50" /></Link>
->>>>>>> 816ff41982f4beb502d9719b33c0aa5a1379d0c7
           </Toolbar>
         </AppBar>
         <Drawer style={list} open={this.state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${this.props.User.user.login}`)}</Drawer>
