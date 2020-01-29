@@ -19,8 +19,8 @@ class NewRequest extends Component {
         }
     }
 
-    useStyles = () => 
-    makeStyles({})
+    useStyles = () =>
+        makeStyles({})
 
     inputHandler = (e) => {
         this.props.Feed.handleInput(e.target.name, e.target.value)
@@ -36,9 +36,10 @@ class NewRequest extends Component {
     }
 
     addNewHelpReq = () => {
-        let details = {...this.state}
+        let details = { ...this.state }
         console.log(details)
-        this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name)
+        this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name,
+            this.props.User.user.lat, this.props.User.user.lon)
         this.setState({
             redirect: true
         })
@@ -58,7 +59,7 @@ class NewRequest extends Component {
             letterSpacing: 2,
             fontSize: 16
         }
-      
+
         const style = this.state.style
 
         const startDate = new Date();

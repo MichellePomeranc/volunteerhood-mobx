@@ -13,6 +13,8 @@ export class userStore {
         ranking: Number,
         counter: Number,
         skills: [],
+        lat: Number,
+        lon: Number,
         image: String
     }
 
@@ -69,12 +71,15 @@ export class userStore {
                 radius: user.radius,
                 ranking: user.ranking,
                 counter: user.counter,
+                lat: 0,
+                lon: 0,
                 image: user.image
             }
         } else {
             alert('Please enter a valid email and password')
         }
-        this.getSkills()
+        this.getSkills();
+        this.getLocation();
     }
 
     @action logout = () => {
@@ -88,7 +93,45 @@ export class userStore {
             radius: Number,
             ranking: Number,
             counter: Number,
+            lat: Number,
+            lon: Number,
             image: String
         }
     }
+
+    getLocation = () => {
+        if (navigator.geolocation) {
+            console.log('true');
+            navigator.geolocation.getCurrentPosition(this.showPosition);
+        } else {
+            console.log("Geolocation is not supported by this browser.");
+        }
+    }
+
+    showPosition = async (position) => {
+        console.log("Latitude: " + position.coords.latitude +
+            " Longitude: " + position.coords.longitude);
+        this.user.lon = position.coords.longitude
+        this.user.lat = position.coords.latitude
+        let result = await this.getDistanceFromLatLonInKm(this.user.lat, this.user.lon, this.user.lat + 0.03, this.user.lat + 0.03)
+    }
+
+    getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {
+        var R = 6371; // Radius of the earth in km
+        var dLat = this.deg2rad(lat2 - lat1);  // deg2rad below
+        var dLon = this.deg2rad(lon2 - lon1);
+        var a =
+            Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2)
+            ;
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        var d = R * c; // Distance in km
+        return d.toFixed(2) + ' km';
+    }
+
+    deg2rad(deg) {
+        return deg * (Math.PI / 180)
+    }
+
 }
