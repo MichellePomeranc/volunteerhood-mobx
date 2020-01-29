@@ -19,11 +19,12 @@ USE volunteerhood;
 -- CREATE TABLE help_requests (
 --     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 --     userReq INT NOT NULL,
---     userHelper INT ,
+--     userHelper INT,
 --     status ENUM ('open', 'in process', 'completed'),
 --     description VARCHAR(255) NOT NULL,
 --     skill VARCHAR(50) NOT NULL,
 --     date DATE,
+--     name VARCHAR(50),
 --     FOREIGN KEY (userReq) REFERENCES user(id),
 --     FOREIGN KEY (userHelper) REFERENCES user(id),
 --     FOREIGN KEY (skill) REFERENCES skills(name)
@@ -50,6 +51,7 @@ USE volunteerhood;
 -- DROP TABLE skills;
 -- DROP TABLE help_requests;
 -- DROP TABLE user_skills;
+-- DROP TABLE help_requests_helpers;
 
 -- CREATE TABLE help_requests_helpers(
 --     help_request_id INT NOT NULL,

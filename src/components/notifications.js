@@ -11,7 +11,6 @@ class Notifications extends Component {
         this.props.Feed.matchHelpAndHelper(this.props.User.user.id);
     }
     render() {
-        // let notifications = this.props.Feed.notifications[this.props.Feed.notifications.length - 1].filter(n => n !== undefined)
         let notifications = this.props.Feed.notifications;
         let helperDetails = this.props.Feed.helperDetails;
         if (notifications.length > 0) {
@@ -19,7 +18,7 @@ class Notifications extends Component {
                 <div>
                     <div>
                         {notifications.map(n => <div key={n.helper_id + n.help_request_id}>
-                            {n.name} wants to help with {n.description}
+                            {n.helperName} wants to help with {n.description}
                             <span onClick={() => this.props.Feed.userAcceptsHelp(n.helper_id)}> Accept</span>
                         </div>)}
                         <div>{helperDetails.name}</div>

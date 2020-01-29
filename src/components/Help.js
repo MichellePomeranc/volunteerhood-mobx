@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 
 @inject('Request', 'Feed', 'User')
 @observer
@@ -18,33 +25,54 @@ class Help extends Component {
     console.log(this.props.f.id);
     this.props.Feed.acceptReq(this.props.f.id, this.props.User.user.id)
   }
-  
+
   render() {
     const list = {
       border: 0,
-      borderRadius: 4,
+      borderRadius: 0,
       backgroundColor: '#5B2333',
       boxShadow: '#564D4A',
       color: 'white',
-      height: 40,
-      width: '90vw',
+      size: 'small',
       letterSpacing: 2,
-      fontSize: 16
+      fontSize: 14
     }
 
     const style = this.state.style
 
     let f = this.props.f
     return (
-      <tbody id='feed'>
-        <tr><th className="user">User </th><td>{f.name}</td></tr>
-        <tr><th className="skill">Skill </th><td>{f.skill}</td></tr>
-        <tr><th className="description">Description </th><td>{f.description}</td></tr>
-        <tr><th className="date">Date</th><td>{f.date}</td></tr>
-        <tr><th className="status">Status</th><td>{f.status}</td></tr>
-        <tr><td colSpan="2"><button style={list} className={style.list} onClick={this.acceptReq}>HELP</button></td></tr>
-      </tbody>
-    )
+      <div className='card'>
+        <Card style={{ backgroundColor: "#F7F4F3" }}>
+        <CardMedia
+          image={require('../../src/Files/volunteerhood.png')}
+          title="Contemplative Reptile"
+          style={{ height: 100 }}
+        />
+            <div>
+            <CardContent>
+              <Typography gutterBottom variant="h6" component="h6" fontWeight='bold'>
+                {f.skill}
+              </Typography>
+              <Typography fontSize='15px'>
+                {f.name}
+              </Typography>
+              <Typography fontSize='12px'>
+                {f.date}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" fontSize='12px'>
+                {f.description}
+              </Typography>
+            </CardContent>
+            </div>
+          <CardActions>
+            <Button style={list} className={style.list} onClick={this.acceptReq}>
+              HELP
+        </Button>
+          </CardActions>
+        </Card>
+      </div>
+      )
   }
 }
 

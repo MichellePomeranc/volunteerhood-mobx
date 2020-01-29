@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
-// const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
+// const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
+const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
 
 router.get("/feed", async function (req, res) {
     let query = `SELECT * FROM help_requests`
@@ -11,16 +11,12 @@ router.get("/feed", async function (req, res) {
 })
 
 router.post("/profile", async function (req, res) {
-    let userId = req.body
+    let userId  = req.body
     userId = Object.keys(userId)
-    // console.log(req.body[0])
-    console.log(userId)
     let query = `SELECT * FROM user_skills WHERE user = ${userId}`
     let result = await sequelize.query(query)
-    // result = new Set(result)
-    console.log(result)
-    console.log(result[1])
-    res.send(result[1])
+    let newResult = result[1]
+    res.send(newResult)
 })
 
 router.post("/signup", async function (req, res) {
@@ -34,8 +30,10 @@ router.post("/signup", async function (req, res) {
 router.post("/addSkill", function (req, res) {
     let skills = req.body.skills
     let userId = req.body.userId
-    skills.forEach(s => {
-        let query = `INSERT INTO user_skills VALUES( '${userId}', '${s}' )`
+    let query2 =`DELETE FROM user_skills WHERE user = '${userId}'`
+        sequelize.query(query2)
+    skills.forEach(s=>{
+        let query = `INSERT INTO user_skills VALUES( '${userId}', '${s}')`
         sequelize.query(query)
     })
     res.send()
@@ -43,7 +41,6 @@ router.post("/addSkill", function (req, res) {
 
 router.post("/feed", function (req, res) {
     let newHelp = req.body
-    console.log(newHelp)
     let query = `INSERT INTO help_requests VALUES(null, '${newHelp.userReq}', null,
          'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}', '${newHelp.name}')`
     sequelize.query(query)
@@ -66,38 +63,25 @@ router.put("/feed/:rid/:hid", async function (req, res) {
 
 router.post('/login', async function (req, res) {
     let x = req.body;
-    // console.log(x.auth)
     let query = `SELECT * FROM user WHERE email = '${x.auth.email}' AND password = '${x.auth.password}'`
     let y = await sequelize.query(query)
     res.send(y[0])
 })
 
-router.post('/notications', async function (req, res) {
+router.post('/notifications', async function (req, res) {
     let userId = Object.keys(req.body)[0];
-    console.log(userId);
-
-    // let query = `SELECT id FROM help_requests WHERE userReq = '${userId}'`
-
-    // let query = `SELECT id, userHelper 
-    // FROM help_requests 
-    // WHERE userReq = '${userId}'`
-
     let query = `SELECT help_request_id, helper_id, help_requests_helpers.name,description	
     FROM help_requests, help_requests_helpers
     WHERE help_requests.userReq = '${userId}'
     AND help_requests.id = help_requests_helpers.help_request_id`
     let helpRequestId = await sequelize.query(query);
-    console.log(helpRequestId[0]);
     res.send(helpRequestId);
 })
 
 router.post('/getUserDetails', async function (req, res) {
     let userId = Object.keys(req.body)[0];
-    console.log(userId);
-
     let query = `SELECT * FROM user WHERE id = '${userId}'`
     let helperDetails = await sequelize.query(query);
-    console.log(helperDetails[0]);
     res.send(helperDetails[0]);
 })
 

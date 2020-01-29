@@ -12,13 +12,13 @@ export class userStore {
         radius: Number,
         ranking: Number,
         counter: Number,
+        skills: [],
     }
 
     @action getSkills = async () => {
         let userId = this.user.id
         let skills = await axios.post(`http://localhost:8080/profile`, userId)
-        return skills
-
+        this.user.skills = skills.data.map(s => s.skill)
     }
 
     @action addNewUser = async (obj) => {
@@ -72,13 +72,14 @@ export class userStore {
         } else {
             alert('Please enter a valid email and password')
         }
+        this.getSkills()
     }
 
     @action logout = () => {
         this.user = {
             id: Number,
             login: false,
-            name: 'guest',
+            name: String,
             email: '',
             password: '',
             phone: '',
