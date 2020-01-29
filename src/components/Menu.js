@@ -12,7 +12,13 @@ import Avatar from '@material-ui/core/Avatar';
 import { observer, inject } from "mobx-react"
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import MailIcon from '@material-ui/icons/Mail';
+import NotificationsIcon from '@material-ui/icons/Notifications';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+
 const logoBar = require('../../src/Files/volunteerhood-bar.png')
+
 
 
 @inject("User")
@@ -69,13 +75,48 @@ class Menu extends Component {
       </div>
     );
 
+    const showIcons = () => {
+      return (
+        <div className='navButtons'>
+          <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="inherit">
+            <Badge badgeContent={0} color="secondary">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+          </Link>
+          <Link to='/notifications'><IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={0} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          </Link>
+        </div>
+      )
+    }
+
 
     return (
       <div>
-        <AppBar position="static" style={{backgroundColor: '#F24333'}}>
+        <AppBar position="static" style={{ backgroundColor: '#F24333' }}>
           <Toolbar >
-            <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{color: '#FFFFFF'}}/></Button>
-            <Link to="/"><img src={logoBar} width="250" height="50" /></Link>
+            <Button edge="start" onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: '#FFFFFF' }} /></Button>
+            <Link to="/"><img src={logoBar} alt="Volunteerhood" width='175vw' height="40px" /></Link>
+            {/* {this.props.User.user.login ? showIcons() : null} */}
+            {this.props.User.user.login ? 
+            <div className='navButtons'>
+          <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="#F7F4F3">
+            <Badge badgeContent={0} color="secondary">
+              <MailIcon />
+            </Badge>
+          </IconButton>
+          </Link>
+          <Link to='/notifications'><IconButton aria-label="show 17 new notifications" color="#F7F4F3">
+            <Badge badgeContent={0} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          </Link> 
+        </div> : null }
           </Toolbar>
         </AppBar>
         <Drawer style={list} open={this.state.left} onClose={toggleDrawer('left', false)}>{sideList('left', `${this.props.User.user.login}`)}</Drawer>

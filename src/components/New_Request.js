@@ -48,7 +48,7 @@ class NewRequest extends Component {
 
         const list = {
             border: 0,
-            borderRadius: 4,
+            borderRadius: 0,
             backgroundColor: '#5B2333',
             boxShadow: '#564D4A',
             color: 'white',

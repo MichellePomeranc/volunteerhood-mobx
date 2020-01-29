@@ -21,7 +21,7 @@ useStyles = () =>
   render() {
     const list = {
       border: 0,
-      borderRadius: 4,
+      borderRadius: 0,
       backgroundColor: '#5B2333',
       boxShadow: '#564D4A',
       color: 'white',
@@ -42,9 +42,9 @@ useStyles = () =>
           <h4>Hello {this.props.User.user.name}, who are you going to help today?</h4>
           <Link style={{ textDecoration: 'none' }} to="/newRequest"><Button style={list} className={style.list}>Ask for Help</Button></Link>
         </div>
-        <table>
+        {/* <table> */}
           {feed.map(f => <Help key={f.id} f={f} acceptReq={this.props.Feed.acceptReq} />)}
-        </table>
+        {/* </table> */}
         </div>
       )
     } else {

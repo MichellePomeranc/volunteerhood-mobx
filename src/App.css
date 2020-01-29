@@ -66,31 +66,11 @@
     .help:active {
       background-color: rgb(112, 44, 64);
     }
-    
   
-  #feed tr > th {
-    text-align: center;
-    background-color: #564D4A;
-    color: white;
-    padding: 5px;
-    width: 35px;
-    font-weight: 400;
-    border-radius: 4px;
-  }
-
-  #feed tr > td {
-    text-align: center;
-    background-color: whitesmoke;
-    padding: 5px;
-    border-radius: 4px;
-  }
-  
-  table {
+  .card {
     font-size: 20px;
     align-self: center;
-    margin-top: 30px;
-    width: 100vw;
-    border-radius: 4px;
+    margin: 10px;
   }
 
 .welcome{
@@ -105,7 +85,7 @@ h4 {
 }
 
 h3 {
-  color: black;
+  color: rgb(14, 12, 12);
   padding: 5px;
   font-weight: 600;
   font-family: sans-serif;
@@ -117,11 +97,10 @@ body {
 }
 
 
-#passwordInputSignIn, #passwordInputSignUp, #emailInput, #nameInput, #phoneInput, .description, .skillDropdown, .dateSelected, .status { 
+#passwordInputSignIn, #passwordInputSignUp, .emailInput, .nameInput, #phoneInput, .description, .skillDropdown, .dateSelected, .status { 
   width: 70vw;
   height: 35px;
   margin: 3px;
-  border-radius: 4px;
   position: relative;
   background-color: rgba(255,255,255,0.3);
   transition: 0.3s all;
@@ -162,10 +141,16 @@ body {
   margin-right: 10px;
   margin-top: 20px;
   background-color: rgba(255,255,255,0.3);
-  border-radius: 4px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.navButtons{
+  display: inherit;
+}
+
+.MuiSvgIcon-root {
+  color: white
 }
 }
