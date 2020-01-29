@@ -66,7 +66,7 @@ class Profile extends Component {
                         <br />
 								<input type="checkbox" defaultChecked={this.props.User.user.skills.includes("Writing")} value="Writing" />Writing
                     </div>
-							<button onClick={this.chooseSkill}>sumbit</button>
+							<button onClick={this.chooseSkill}>Sumbit</button>
 						</div>
 					</form>
 				);

@@ -75,24 +75,24 @@ class Menu extends Component {
       </div>
     );
 
-    const showIcons = () => {
-      return (
-        <div className='navButtons'>
-          <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="inherit">
-            <Badge badgeContent={0} color="secondary">
-              <MailIcon />
-            </Badge>
-          </IconButton>
-          </Link>
-          <Link to='/notifications'><IconButton aria-label="show 17 new notifications" color="inherit">
-            <Badge badgeContent={0} color="secondary">
-              <NotificationsIcon />
-            </Badge>
-          </IconButton>
-          </Link>
-        </div>
-      )
-    }
+    // const showIcons = () => {
+    //   return (
+    //     <div className='navButtons'>
+    //       <Link to='/notifications'><IconButton aria-label="show 4 new mails" color="inherit">
+    //         <Badge badgeContent={0} color="secondary">
+    //           <MailIcon />
+    //         </Badge>
+    //       </IconButton>
+    //       </Link>
+    //       <Link to='/notifications'><IconButton aria-label="show 17 new notifications" color="inherit">
+    //         <Badge badgeContent={0} color="secondary">
+    //           <NotificationsIcon />
+    //         </Badge>
+    //       </IconButton>
+    //       </Link>
+    //     </div>
+    //   )
+    // }
 
 
     return (

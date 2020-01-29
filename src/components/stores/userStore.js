@@ -72,8 +72,7 @@ export class userStore {
         } else {
             alert('Please enter a valid email and password')
         }
-    } 
-    this.getSkills()
+        this.getSkills()
     }
 
     @action logout = () => {
