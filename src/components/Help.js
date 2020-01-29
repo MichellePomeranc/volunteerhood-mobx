@@ -44,12 +44,12 @@ class Help extends Component {
     return (
       <div className='card'>
         <Card style={{ backgroundColor: "#F7F4F3" }}>
-        <CardMedia
-          image={require('../../src/Files/volunteerhood.png')}
-          title="Contemplative Reptile"
-          style={{ height: 100 }}
-        />
-            <div>
+          <CardMedia
+            image={require('../../src/Files/volunteerhood.png')}
+            title="Contemplative Reptile"
+            style={{ height: 100 }}
+          />
+          <div>
             <CardContent>
               <Typography gutterBottom variant="h6" component="h6" fontWeight='bold'>
                 {f.skill}
@@ -63,8 +63,13 @@ class Help extends Component {
               <Typography variant="body2" color="textSecondary" fontSize='12px'>
                 {f.description}
               </Typography>
+              <Typography variant="body2" color="textSecondary" fontSize='12px'>
+                {this.props.User.getDistanceFromLatLonInKm(this.props.User.user.lat, this.props.User.user.lon,
+                  f.lat, f.lon)}
+              </Typography>
+
             </CardContent>
-            </div>
+          </div>
           <CardActions>
             <Button style={list} className={style.list} onClick={this.acceptReq}>
               HELP
@@ -72,7 +77,7 @@ class Help extends Component {
           </CardActions>
         </Card>
       </div>
-      )
+    )
   }
 }
 

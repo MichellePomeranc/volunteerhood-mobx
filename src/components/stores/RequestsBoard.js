@@ -26,10 +26,12 @@ export class RequestsBoard {
         axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
     }
 
-    @action addNewRequest = async (id, obj, name) => {
+    @action addNewRequest = async (id, obj, name, lat, lon) => {
         let newRequest = new HelpRequest(
-            id, obj.description, obj.skill, obj.date, name
+            id, obj.description, obj.skill, obj.date, name, lat, lon
         )
+        console.log(newRequest);
+
         await axios.post(`http://localhost:8080/feed`, newRequest)
         this.getFeed()
     }

@@ -60,5 +60,11 @@ USE volunteerhood;
 --     FOREIGN KEY (helper_id) REFERENCES user(id)
 -- )
 
-ALTER TABLE help_requests_helpers
-ADD name VARCHAR(50)
+-- ALTER TABLE help_requests_helpers
+
+
+-- ALTER TABLE help_requests
+-- ADD lat FLOAT
+-- ADD lon FLOAT;
+
+-- INSERT INTO help_requests VALUES(null,10,null,'open','location2','Design',null,"name",32.1668265,34.8631278)
