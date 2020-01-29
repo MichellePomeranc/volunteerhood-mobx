@@ -79,4 +79,4 @@ USE volunteerhood;
 -- ADD lat FLOAT;
 
 -- ALTER TABLE help_requests
--- ADD longitude FLOAT
+-- ADD lon FLOAT
