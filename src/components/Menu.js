@@ -72,9 +72,9 @@ class Menu extends Component {
 
     return (
       <div>
-        <AppBar position="static" style={{backgroundColor: '#F24333'}}>
+        <AppBar position="static" style={{ backgroundColor: '#F24333' }}>
           <Toolbar >
-            <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{color: '#FFFFFF'}}/></Button>
+            <Button onClick={toggleDrawer('left', true)}><MenuIcon style={{ color: '#FFFFFF' }} /></Button>
             <Link to="/"><img src={logoBar} width="250" height="50" /></Link>
           </Toolbar>
         </AppBar>

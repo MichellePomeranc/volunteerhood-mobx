@@ -1,8 +1,8 @@
 const express = require("express")
 const router = express.Router()
 const Sequelize = require('sequelize')
-// const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
-const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
+const sequelize = new Sequelize('mysql://root:@localhost/volunteerhood')
+// const sequelize = new Sequelize('mysql://root:Aliahumus1@localhost/volunteerhood')
 
 router.get("/feed", async function (req, res) {
     let query = `SELECT * FROM help_requests`
@@ -78,7 +78,7 @@ router.post('/notications', async function (req, res) {
     // FROM help_requests 
     // WHERE userReq = '${userId}'`
 
-    let query = `SELECT help_request_id, helper_id
+    let query = `SELECT help_request_id, helper_id, name, description
     FROM help_requests, help_requests_helpers
     WHERE help_requests.userReq = '${userId}'
     AND help_requests.id = help_requests_helpers.help_request_id`

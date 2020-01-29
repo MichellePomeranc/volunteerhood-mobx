@@ -14,12 +14,12 @@ export class userStore {
         counter: Number,
     }
 
-    @action getSkills = async()=>{
+    @action getSkills = async () => {
         let userId = this.user.id
-        let skills = await axios.post(`http://localhost:8080/profile`,userId)
+        let skills = await axios.post(`http://localhost:8080/profile`, userId)
         return skills
-      
-      }
+
+    }
 
     @action addNewUser = async (obj) => {
         console.log(obj);
@@ -53,20 +53,24 @@ export class userStore {
             auth: {
                 email: email,
                 password: password
-            } 
+            }
         })
         console.log(user.data[0])
         user = user.data[0]
-        this.user = {
-            id: user.id,
-            login: true,
-            name: user.name,
-            email: user.email,
-            password: user.password,
-            phone: user.phone,
-            radius: user.radius,
-            ranking: user.ranking,
-            counter: user.counter,
+        if (user) {
+            this.user = {
+                id: user.id,
+                login: true,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+                phone: user.phone,
+                radius: user.radius,
+                ranking: user.ranking,
+                counter: user.counter,
+            }
+        } else {
+            alert('Please enter a valid email and password')
         }
     }
 
