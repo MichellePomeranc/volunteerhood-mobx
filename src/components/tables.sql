@@ -53,9 +53,12 @@ USE volunteerhood;
 -- DROP TABLE user_skills;
 -- DROP TABLE help_requests_helpers;
 
-CREATE TABLE help_requests_helpers(
-    help_request_id INT NOT NULL,
-    helper_id INT NOT NULL,
-    FOREIGN KEY (help_request_id) REFERENCES help_requests(id),
-    FOREIGN KEY (helper_id) REFERENCES user(id)
-)
+-- CREATE TABLE help_requests_helpers(
+--     help_request_id INT NOT NULL,
+--     helper_id INT NOT NULL,
+--     FOREIGN KEY (help_request_id) REFERENCES help_requests(id),
+--     FOREIGN KEY (helper_id) REFERENCES user(id)
+-- )
+
+ALTER TABLE help_requests_helpers
+ADD helperName VARCHAR(50)

@@ -26,10 +26,6 @@ export class RequestsBoard {
         axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
     }
 
-    acceptReq = (reqId, helperId) => {
-        axios.put(`http://localhost:8080/feed/${reqId}/${helperId}`)
-    }
-
     @action addNewRequest = async (id, obj, name) => {
         let newRequest = new HelpRequest(
             id, obj.description, obj.skill, obj.date, name
@@ -39,7 +35,7 @@ export class RequestsBoard {
     }
 
     @action async matchHelpAndHelper(userId) {
-        let x = await axios.post(`http://localhost:8080/notications`, userId);
+        let x = await axios.post(`http://localhost:8080/notifications`, userId);
         x = x.data[0];
         this.notifications = x;
     }
