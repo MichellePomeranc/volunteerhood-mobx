@@ -61,4 +61,4 @@ USE volunteerhood;
 -- )
 
 ALTER TABLE help_requests_helpers
-ADD helperName VARCHAR(50)
+ADD name VARCHAR(50)

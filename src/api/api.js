@@ -52,10 +52,11 @@ router.put("/feed/:rid/:hid", async function (req, res) {
     let hid = req.params.hid
     let query = `UPDATE help_requests SET status = 'in process', userHelper = ${hid} WHERE id = ${rid} `
     sequelize.query(query)
-    // let query3 = `SELECT helperName FROM help_requests_helpers WHERE helper_id = ${hid}`
-    // let helperName = await sequelize.query(query3)
+    let query3 = `SELECT name FROM user WHERE id = ${hid} `
+    let helperName = await sequelize.query(query3)
+    console.log(helperName[0][0].name);
+    helperName = helperName[0][0].name;
     let query2 = `INSERT help_requests_helpers VALUES(${rid},${hid},'${helperName}')`
-    // console.log(helperName)
     sequelize.query(query2)
     res.end()
 })
@@ -69,7 +70,7 @@ router.post('/login', async function (req, res) {
 
 router.post('/notifications', async function (req, res) {
     let userId = Object.keys(req.body)[0];
-    let query = `SELECT help_request_id, helper_id, helperName, description
+    let query = `SELECT help_request_id, helper_id, help_requests_helpers.name,description	
     FROM help_requests, help_requests_helpers
     WHERE help_requests.userReq = '${userId}'
     AND help_requests.id = help_requests_helpers.help_request_id`
