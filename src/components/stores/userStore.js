@@ -15,6 +15,7 @@ export class userStore {
         skills: [],
         lat: Number,
         lon: Number,
+        image: String
     }
 
     @action getSkills = async () => {
@@ -72,6 +73,7 @@ export class userStore {
                 counter: user.counter,
                 lat: 0,
                 lon: 0,
+                image: user.image
             }
         } else {
             alert('Please enter a valid email and password')
@@ -93,11 +95,9 @@ export class userStore {
             counter: Number,
             lat: Number,
             lon: Number,
+            image: String
         }
     }
-    // componentDidMount() {
-    //     this.getLocation()
-    // }
 
     getLocation = () => {
         if (navigator.geolocation) {
@@ -114,9 +114,6 @@ export class userStore {
         this.user.lon = position.coords.longitude
         this.user.lat = position.coords.latitude
         let result = await this.getDistanceFromLatLonInKm(this.user.lat, this.user.lon, this.user.lat + 0.03, this.user.lat + 0.03)
-        // console.log(result.toFixed(2) + ' km');
-        // this.user.radius = result.toFixed(2)
-        // return result.toFixed(2) + ' km'
     }
 
     getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {

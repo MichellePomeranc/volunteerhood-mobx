@@ -5,7 +5,7 @@ export class HelpRequest {
     @observable userReq
     @observable description
     @observable skill
-    @observable status = 'open'
+    @observable status = 'New'
     @observable date
     @observable name
     @observable lat

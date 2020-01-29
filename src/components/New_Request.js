@@ -81,14 +81,15 @@ class NewRequest extends Component {
                         <select className="skillDropdown" name="skill" onChange={this.updateState}>
                             <option value="" disabled selected>Select your option</option>
                             <option value="Carpentry"> Carpentry </option>
-                            <option value="Design"> Design</option>
                             <option value="Electricity"> Electricity</option>
-                            <option value="Languages"> Languages</option>
-                            <option value="Legal"> Legal</option>
-                            <option value="Math"> Math</option>
+                            <option value="Design"> Design</option>
+                            <option value="Translation"> Translation</option>
+                            <option value="Cooking"> Cooking</option>
+                            <option value="Financial"> Financial</option>
                             <option value="Plumbing"> Plumbing</option>
-                            <option value="Programming"> Programming</option>
                             <option value="Writing"> Writing</option>
+                            <option value="Programming"> Programming</option>
+                            <option value="Shopping"> Shopping</option>
                         </select>
                     </div>
                     <div className="dateOption">Date</div>

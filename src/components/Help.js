@@ -51,7 +51,7 @@ class Help extends Component {
           />
           <div>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h6" fontWeight='bold'>
+              <Typography gutterBottom variant="h5" component="h5">
                 {f.skill}
               </Typography>
               <Typography fontSize='15px'>
@@ -67,7 +67,9 @@ class Help extends Component {
                 {this.props.User.getDistanceFromLatLonInKm(this.props.User.user.lat, this.props.User.user.lon,
                   f.lat, f.lon)}
               </Typography>
-
+              <Typography variant="h6" component="h6">
+                {f.status}
+              </Typography>
             </CardContent>
           </div>
           <CardActions>
