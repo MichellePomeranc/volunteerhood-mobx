@@ -44,9 +44,9 @@ class Help extends Component {
       <div className='card'>
         <Card style={{ backgroundColor: "#F7F4F3" }}>
           <CardMedia
-            image={require('../../src/Files/volunteerhood.png')}
-            title="Contemplative Reptile"
-            style={{ height: 100 }}
+            image={require('../../src/Files/volunt.png')}
+            title="User image"
+            style={{ height: 100, opacity: 0.5, maxWidth: '100', maxHeight: '100'}}
           />
           <div>
             <CardContent>

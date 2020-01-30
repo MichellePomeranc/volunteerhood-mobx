@@ -11,7 +11,7 @@ class Landing extends Component {
 
     return (
       <div className="row">
-        <video id="background-video" loop autoPlay height='200' >
+        <video id="background-video" loop autoPlay muted='true' height='200' >
           <source src={video} type="video/mp4" />
           <source src={video} type="video/ogg" />
           Your browser does not support the video tag.

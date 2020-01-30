@@ -100,7 +100,7 @@ body {
 #passwordInputSignIn, #passwordInputSignUp, .emailInput, .nameInput, #phoneInput, .description, .skillDropdown, .dateSelected, .status { 
   width: 70vw;
   height: 35px;
-  margin: 3px;
+  margin: auto;
   position: relative;
   background-color: rgba(255,255,255,0.3);
   transition: 0.3s all;
@@ -149,8 +149,8 @@ body {
 
 .counter{
   border: 1px solid #564D4A;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
   background-color: rgba(255,255,255,0.3);
   display: flex;
@@ -159,7 +159,8 @@ body {
   justify-content: center;
   font-size: 25px;
   font-weight: 600;
-  color: #F24333
+  color: #F24333;
+  width: 80vw
 }
 
 .navButtons{
