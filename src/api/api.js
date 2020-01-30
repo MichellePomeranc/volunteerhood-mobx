@@ -55,7 +55,6 @@ router.put("/feed/:rid/:hid", async function (req, res) {
     sequelize.query(query)
     let query3 = `SELECT name FROM user WHERE id = ${hid} `
     let helperName = await sequelize.query(query3)
-    console.log(helperName[0][0].name);
     helperName = helperName[0][0].name;
     let query2 = `INSERT help_requests_helpers VALUES(${rid},${hid},'${helperName}')`
     sequelize.query(query2)

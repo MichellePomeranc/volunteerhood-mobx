@@ -30,8 +30,6 @@ export class RequestsBoard {
         let newRequest = new HelpRequest(
             id, obj.description, obj.skill, obj.date, name, lat, lon
         )
-        console.log(newRequest);
-
         await axios.post(`http://localhost:8080/feed`, newRequest)
         this.getFeed()
     }
@@ -44,7 +42,6 @@ export class RequestsBoard {
 
     @action async userAcceptsHelp(id) {
         let x = await axios.post(`http://localhost:8080/getUserDetails`, id);
-        console.log(x.data[0]);
         this.helperDetails = x.data[0];
     }
 }

@@ -22,7 +22,6 @@ class Help extends Component {
   useStyles = () => makeStyles({})
 
   acceptReq = () => {
-    console.log(this.props.f.id);
     this.props.Feed.acceptReq(this.props.f.id, this.props.User.user.id)
   }
 

@@ -1,5 +1,5 @@
 import { observable } from 'mobx'
-import { User } from './userStore'
+// import { User } from './userStore'
 
 export class HelpRequest {
     @observable userReq
