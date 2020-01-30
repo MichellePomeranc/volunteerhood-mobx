@@ -1,16 +1,21 @@
 import React, { Component } from 'react'
+import { observer, inject } from 'mobx-react';
 const logo = require('../../src/Files/volunteerhood.png')
 
-export default class Landing extends Component {
+@inject("Request", "Feed", "User")
+@observer
+class Landing extends Component {
+  
 
   render() {
 
     return (
       <div className="row">
         <div className="logo">
-          <img className="logo" alt="Welcome" src={logo}  width="350" height="350"/>
         </div>
+        <div>{this.props.Feed.feed.length} people already got help</div>
       </div>
     );
   }
 }    
+export default Landing;

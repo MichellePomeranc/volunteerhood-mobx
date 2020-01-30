@@ -1,8 +1,11 @@
-import { observable, action } from "mobx";
+import { observable, action, inject } from "mobx";
 import axios from 'axios';
+import  User  from './userStore';
 import { HelpRequest } from './HelpRequest'
 
+
 export class RequestsBoard {
+    
     @observable feed = []
     @observable left = false
     @observable notifications = []
@@ -16,10 +19,19 @@ export class RequestsBoard {
         ranking: 0,
         counter: 0
     }
-
+ 
     @action async getFeed() {
         let response = await axios.get('http://localhost:8080/feed');
+        console.log(response)
+        let filterdSkills = []
+        // if(User.user.skills.length>0 ){
+        filterdSkills = response.data[0].filter(s =>s.skill == "Carpentry")
+        console.log(filterdSkills)
+        console.log(User.user)
+        // }
+        // }else{
         this.feed = response.data[0]
+    // }
     }
 
     acceptReq = (reqId, helperId) => {
@@ -49,4 +61,5 @@ export class RequestsBoard {
         console.log(x.data[0]);
         this.helperDetails = x.data[0];
     }
+
 }

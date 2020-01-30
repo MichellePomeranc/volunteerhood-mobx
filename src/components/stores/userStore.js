@@ -72,10 +72,9 @@ export class userStore {
         } else {
             alert('Please enter a valid email and password')
         }
+        this.getSkills()
     } 
-    this.getSkills()
-    }
-
+    
     @action logout = () => {
         this.user = {
             id: Number,
@@ -90,3 +89,5 @@ export class userStore {
         }
     }
 }
+let User = new userStore()
+export default User

@@ -81,4 +81,6 @@ router.post('/getUserDetails', async function (req, res) {
     res.send(helperDetails[0]);
 })
 
+
+
 module.exports = router

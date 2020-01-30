@@ -10,6 +10,8 @@ import 'font-awesome/css/font-awesome.min.css';
 import NewRequest from './components/New_Request';
 import { observer, inject } from 'mobx-react';
 import Notifications from './components/Notifications';
+import { geolocated } from "react-geolocated";
+
 
 
 @inject("Request", "Feed", "User")
@@ -20,10 +22,13 @@ class App extends Component {
 		this.props.Feed.getFeed();
 	}
 
+	
+
 	render() {
 		return (
 			<div>
 				<Router>
+				
 					<Menu user={this.props.Feed.user} logout={this.props.User.logout} />
 					<Route path="/" exact render={() => <Landing />} />
 					<Route path="/feed" exact render={() => <Feed acceptReq={this.props.Feed.acceptReq} />} />
@@ -31,6 +36,7 @@ class App extends Component {
 					<Route path="/login" exact render={() => <UserLog />} />
 					<Route path="/newRequest" exact render={() => <NewRequest addNewRequest={this.props.Feed.addNewRequest} />} />
 					<Route path="/notifications" exact render={() => <Notifications />} />
+		
 				</Router>
 			</div>
 		);
