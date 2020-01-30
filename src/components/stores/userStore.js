@@ -25,7 +25,6 @@ export class userStore {
     }
 
     @action addNewUser = async (obj) => {
-        console.log(obj);
         let newUser = {
             name: obj.name,
             email: obj.email,
@@ -36,8 +35,6 @@ export class userStore {
             counter: 0,
         }
         let id = await axios.post('http://localhost:8080/signup', newUser)
-        console.log(id.data[0])
-        console.log(newUser);
         this.user = {
             id: id.data[0],
             login: true,
@@ -58,7 +55,6 @@ export class userStore {
                 password: password
             }
         })
-        console.log(user.data[0])
         user = user.data[0]
         if (user) {
             this.user = {
@@ -101,19 +97,18 @@ export class userStore {
 
     getLocation = () => {
         if (navigator.geolocation) {
-            console.log('true');
             navigator.geolocation.getCurrentPosition(this.showPosition);
         } else {
             console.log("Geolocation is not supported by this browser.");
         }
     }
 
-    showPosition = async (position) => {
-        console.log("Latitude: " + position.coords.latitude +
-            " Longitude: " + position.coords.longitude);
+    showPosition = /* async */ (position) => {
+        // console.log("Latitude: " + position.coords.latitude +
+        //     " Longitude: " + position.coords.longitude);
         this.user.lon = position.coords.longitude
         this.user.lat = position.coords.latitude
-        let result = await this.getDistanceFromLatLonInKm(this.user.lat, this.user.lon, this.user.lat + 0.03, this.user.lat + 0.03)
+        /* let result =  *//* await */ this.getDistanceFromLatLonInKm(this.user.lat, this.user.lon, this.user.lat + 0.03, this.user.lat + 0.03)
     }
 
     getDistanceFromLatLonInKm = (lat1, lon1, lat2, lon2) => {

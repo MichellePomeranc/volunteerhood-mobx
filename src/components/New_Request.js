@@ -32,12 +32,10 @@ class NewRequest extends Component {
         this.setState({
             [name]: value
         })
-        console.log(value)
     }
 
     addNewHelpReq = () => {
         let details = { ...this.state }
-        console.log(details)
         this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name,
             this.props.User.user.lat, this.props.User.user.lon)
         this.setState({
@@ -63,9 +61,9 @@ class NewRequest extends Component {
         const style = this.state.style
 
         const startDate = new Date();
-        function onResize(event) {
+        /* function onResize(event) {
             console.log(event.type);
-        }
+        } */
 
         if (this.state.redirect) {
             return (
@@ -75,7 +73,7 @@ class NewRequest extends Component {
             return (
                 <div className="requestForm">
                     <div className="descriptionForm">Descripition</div>
-                    <div><TextareaAutosize onResize={onResize} maxRows={5} className="description" type="text" name='description' onChange={this.updateState}></TextareaAutosize></div>
+                    <div><TextareaAutosize /* onResize={onResize} */ maxRows={5} className="description" type="text" name='description' onChange={this.updateState}></TextareaAutosize></div>
                     <div className="skillNeeded">Skill needed</div>
                     <div>
                         <select className="skillDropdown" name="skill" onChange={this.updateState}>

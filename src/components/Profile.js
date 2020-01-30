@@ -17,13 +17,11 @@ class Profile extends Component {
 	chooseSkill = async (e) => {
 		e.preventDefault();
 		let skills = this.state.skills;
-		console.log(skills)
 		let userId = this.props.User.user.id;
 		let data = {
 			skills: skills,
 			userId: userId
 		};
-		console.log(data)
 		Axios.post(`http://localhost:8080/addSkill`, data)
 	}
 
@@ -36,7 +34,6 @@ class Profile extends Component {
 		} else {
 			skills.push(value)
 		}
-		console.log(skills)
 		this.setState({
 			skills: skills
 		})
@@ -61,7 +58,7 @@ class Profile extends Component {
 			return (
 				<form>
 					<div className="userProfile">
-						<div><img src={this.props.User.user.image} className="profileImage"></img></div>
+						<div><img src={this.props.User.user.image} alt="" className="profileImage"></img></div>
 						<div className="profileName">Name</div>
 						<div className="profileInfo">{this.props.User.user.name}</div>
 						<div className="profileEmail">Email</div>

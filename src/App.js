@@ -10,7 +10,6 @@ import 'font-awesome/css/font-awesome.min.css';
 import NewRequest from './components/New_Request';
 import { observer, inject } from 'mobx-react';
 import Notifications from './components/Notifications';
-import Map from './components/Map'
 
 
 @inject("Request", "Feed", "User")
@@ -32,7 +31,6 @@ class App extends Component {
 					<Route path="/login" exact render={() => <UserLog />} />
 					<Route path="/newRequest" exact render={() => <NewRequest addNewRequest={this.props.Feed.addNewRequest} />} />
 					<Route path="/notifications" exact render={() => <Notifications />} />
-					<Route path="/maps" exact render={() => <Map />} />
 				</Router>
 			</div>
 		);
