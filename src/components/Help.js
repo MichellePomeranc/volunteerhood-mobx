@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -23,7 +22,6 @@ class Help extends Component {
   useStyles = () => makeStyles({})
 
   acceptReq = () => {
-    console.log(this.props.f.id);
     this.props.Feed.acceptReq(this.props.f.id, this.props.User.user.id)
   }
 
@@ -45,14 +43,14 @@ class Help extends Component {
     return (
       <div className='card'>
         <Card style={{ backgroundColor: "#F7F4F3" }}>
-        <CardMedia
-          image={require('../../src/Files/volunteerhood.png')}
-          title="Contemplative Reptile"
-          style={{ height: 100 }}
-        />
-            <div>
+          <CardMedia
+            image={require('../../src/Files/volunteerhood.png')}
+            title="Contemplative Reptile"
+            style={{ height: 100 }}
+          />
+          <div>
             <CardContent>
-              <Typography gutterBottom variant="h6" component="h6" fontWeight='bold'>
+              <Typography gutterBottom variant="h5" component="h5">
                 {f.skill}
               </Typography>
               <Typography fontSize='15px'>
@@ -64,16 +62,23 @@ class Help extends Component {
               <Typography variant="body2" color="textSecondary" fontSize='12px'>
                 {f.description}
               </Typography>
+              <Typography variant="body2" color="textSecondary" fontSize='12px'>
+                {this.props.User.getDistanceFromLatLonInKm(this.props.User.user.lat, this.props.User.user.lon,
+                  f.lat, f.lon)}
+              </Typography>
+              <Typography variant="h6" component="h6">
+                {f.status}
+              </Typography>
             </CardContent>
-            </div>
+          </div>
           <CardActions>
-            <Button style={list} className={style.list}>
+            <Button style={list} className={style.list} onClick={this.acceptReq}>
               HELP
         </Button>
           </CardActions>
         </Card>
       </div>
-      )
+    )
   }
 }
 

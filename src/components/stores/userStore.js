@@ -13,6 +13,9 @@ export class userStore {
         ranking: Number,
         counter: Number,
         skills: [],
+        lat: Number,
+        lon: Number,
+        image: String
     }
 
     @action getSkills = async () => {
@@ -22,7 +25,6 @@ export class userStore {
     }
 
     @action addNewUser = async (obj) => {
-        console.log(obj);
         let newUser = {
             name: obj.name,
             email: obj.email,
@@ -33,8 +35,6 @@ export class userStore {
             counter: 0,
         }
         let id = await axios.post('http://localhost:8080/signup', newUser)
-        console.log(id.data[0])
-        console.log(newUser);
         this.user = {
             id: id.data[0],
             login: true,
@@ -55,7 +55,6 @@ export class userStore {
                 password: password
             }
         })
-        console.log(user.data[0])
         user = user.data[0]
         if (user) {
             this.user = {
@@ -68,6 +67,9 @@ export class userStore {
                 radius: user.radius,
                 ranking: user.ranking,
                 counter: user.counter,
+                lat: 0,
+                lon: 0,
+                image: user.image
             }
         } else {
             alert('Please enter a valid email and password')
@@ -86,6 +88,9 @@ export class userStore {
             radius: Number,
             ranking: Number,
             counter: Number,
+            lat: Number,
+            lon: Number,
+            image: String
         }
     }
 }

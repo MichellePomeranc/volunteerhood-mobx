@@ -19,8 +19,8 @@ class NewRequest extends Component {
         }
     }
 
-    useStyles = () => 
-    makeStyles({})
+    useStyles = () =>
+        makeStyles({})
 
     inputHandler = (e) => {
         this.props.Feed.handleInput(e.target.name, e.target.value)
@@ -32,13 +32,12 @@ class NewRequest extends Component {
         this.setState({
             [name]: value
         })
-        console.log(value)
     }
 
     addNewHelpReq = () => {
-        let details = {...this.state}
-        console.log(details)
-        this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name)
+        let details = { ...this.state }
+        this.props.Feed.addNewRequest(this.props.User.user.id, details, this.props.User.user.name,
+            this.props.User.user.lat, this.props.User.user.lon)
         this.setState({
             redirect: true
         })
@@ -58,13 +57,13 @@ class NewRequest extends Component {
             letterSpacing: 2,
             fontSize: 16
         }
-      
+
         const style = this.state.style
 
         const startDate = new Date();
-        function onResize(event) {
+        /* function onResize(event) {
             console.log(event.type);
-        }
+        } */
 
         if (this.state.redirect) {
             return (
@@ -74,20 +73,21 @@ class NewRequest extends Component {
             return (
                 <div className="requestForm">
                     <div className="descriptionForm">Descripition</div>
-                    <div><TextareaAutosize onResize={onResize} maxRows={5} className="description" type="text" name='description' onChange={this.updateState}></TextareaAutosize></div>
+                    <div><TextareaAutosize /* onResize={onResize} */ maxRows={5} className="description" type="text" name='description' onChange={this.updateState}></TextareaAutosize></div>
                     <div className="skillNeeded">Skill needed</div>
                     <div>
                         <select className="skillDropdown" name="skill" onChange={this.updateState}>
                             <option value="" disabled selected>Select your option</option>
                             <option value="Carpentry"> Carpentry </option>
-                            <option value="Design"> Design</option>
                             <option value="Electricity"> Electricity</option>
-                            <option value="Languages"> Languages</option>
-                            <option value="Legal"> Legal</option>
-                            <option value="Math"> Math</option>
+                            <option value="Design"> Design</option>
+                            <option value="Translation"> Translation</option>
+                            <option value="Cooking"> Cooking</option>
+                            <option value="Financial"> Financial</option>
                             <option value="Plumbing"> Plumbing</option>
-                            <option value="Programming"> Programming</option>
                             <option value="Writing"> Writing</option>
+                            <option value="Programming"> Programming</option>
+                            <option value="Shopping"> Shopping</option>
                         </select>
                     </div>
                     <div className="dateOption">Date</div>

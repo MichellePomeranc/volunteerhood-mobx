@@ -11,7 +11,7 @@ router.get("/feed", async function (req, res) {
 })
 
 router.post("/profile", async function (req, res) {
-    let userId  = req.body
+    let userId = req.body
     userId = Object.keys(userId)
     let query = `SELECT * FROM user_skills WHERE user = ${userId}`
     let result = await sequelize.query(query)
@@ -22,7 +22,7 @@ router.post("/profile", async function (req, res) {
 router.post("/signup", async function (req, res) {
     let newUser = req.body
     let query = `INSERT INTO user VALUES(null, '${newUser.name}','${newUser.email}' ,
-            '${newUser.password}', '${newUser.phone}', '${newUser.radius}', '${newUser.ranking}', '${newUser.counter}')`
+            '${newUser.password}', '${newUser.phone}', '${newUser.radius}', '${newUser.ranking}', '${newUser.counter}', '')`
     let x = await sequelize.query(query)
     res.send(x)
 })
@@ -30,9 +30,9 @@ router.post("/signup", async function (req, res) {
 router.post("/addSkill", function (req, res) {
     let skills = req.body.skills
     let userId = req.body.userId
-    let query2 =`DELETE FROM user_skills WHERE user = '${userId}'`
-        sequelize.query(query2)
-    skills.forEach(s=>{
+    let query2 = `DELETE FROM user_skills WHERE user = '${userId}'`
+    sequelize.query(query2)
+    skills.forEach(s => {
         let query = `INSERT INTO user_skills VALUES( '${userId}', '${s}')`
         sequelize.query(query)
     })
@@ -42,17 +42,21 @@ router.post("/addSkill", function (req, res) {
 router.post("/feed", function (req, res) {
     let newHelp = req.body
     let query = `INSERT INTO help_requests VALUES(null, '${newHelp.userReq}', null,
-         'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}', '${newHelp.name}')`
+         'open', '${newHelp.description}', '${newHelp.skill}', '${newHelp.date}', '${newHelp.name}',
+         '${newHelp.lat}','${newHelp.lon}')`
     sequelize.query(query)
     res.send('the request inserted')
 })
 
-router.put("/feed/:rid/:hid", function (req, res) {
+router.put("/feed/:rid/:hid", async function (req, res) {
     let rid = req.params.rid
     let hid = req.params.hid
-    let query = `UPDATE help_requests SET status = 'in process', userHelper = ${hid} WHERE id = ${rid} `
+    let query = `UPDATE help_requests SET status = 'In process', userHelper = ${hid} WHERE id = ${rid} `
     sequelize.query(query)
-    let query2 = `INSERT help_requests_helpers VALUES(${rid},${hid})`
+    let query3 = `SELECT name FROM user WHERE id = ${hid} `
+    let helperName = await sequelize.query(query3)
+    helperName = helperName[0][0].name;
+    let query2 = `INSERT help_requests_helpers VALUES(${rid},${hid},'${helperName}')`
     sequelize.query(query2)
     res.end()
 })
@@ -64,9 +68,9 @@ router.post('/login', async function (req, res) {
     res.send(y[0])
 })
 
-router.post('/notications', async function (req, res) {
+router.post('/notifications', async function (req, res) {
     let userId = Object.keys(req.body)[0];
-    let query = `SELECT help_request_id, helper_id, name, description
+    let query = `SELECT help_request_id, helper_id, help_requests_helpers.name,description	
     FROM help_requests, help_requests_helpers
     WHERE help_requests.userReq = '${userId}'
     AND help_requests.id = help_requests_helpers.help_request_id`
